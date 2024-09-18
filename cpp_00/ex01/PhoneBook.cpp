@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:08:36 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:08:38 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <string>
 #include <cctype>
@@ -11,6 +23,8 @@ PhoneBook::PhoneBook(): _cursor(0), _count(0)
 
 void PhoneBook::add_contact (Contact contact)
 {
+	if (!contact.isValid())
+		return;
 	if (_count >= MAX_CONTACTS)
 	{
 		if (_cursor >= MAX_CONTACTS)

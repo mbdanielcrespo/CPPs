@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:31:29 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:31:29 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#pragma once
 #include <main.h>
-//#include <ClapTrap.hpp>
 #include <ScavTrap.hpp>
 
 ScavTrap::ScavTrap() : ClapTrap("UnNamed", 100, 50, 20)

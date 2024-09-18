@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:14:39 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:16:20 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <main.h>
 #include <Zombie.hpp>
 
@@ -9,7 +21,7 @@ Zombie::Zombie()
 Zombie::Zombie(std::string name)
 {
 	this->_name = name;
-	std::cout << GREEN << "Zombie created successfully!" << RESET << std::endl; 
+	std::cout << GREEN << "Zombie " << this->_name << "created successfully!" << RESET << std::endl; 
 }
 
 Zombie::~Zombie()

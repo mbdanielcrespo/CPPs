@@ -1,8 +1,19 @@
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-# include <iostream>
-# include <string.h>
-# include "Contact.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:09:08 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:09:18 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#pragma once
+#include <iostream>
+#include <string.h>
+#include "Contact.hpp"
 
 # define MAX_CONTACTS 8
 
@@ -23,5 +34,3 @@ class PhoneBook
 		int		_cursor;
 		int		_count;
 };
-
-#endif

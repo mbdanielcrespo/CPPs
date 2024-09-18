@@ -1,8 +1,18 @@
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:18:57 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:19:00 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include <Zombie.hpp>
-# include <iostream>
+#pragma once
+#include <Zombie.hpp>
+#include <iostream>
 
 # define RESET     	"\033[0m"
 # define RED       	"\033[31m"      
@@ -24,5 +34,3 @@
 
 Zombie *newZombie(std::string name);
 void	randomChump(std::string name);
-
-#endif // ZOMBIE_H

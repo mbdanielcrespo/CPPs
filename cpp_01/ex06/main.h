@@ -1,5 +1,4 @@
-#ifndef MAIN_H
-# define MAIN_H
+#pragma once
 
 # define RESET     	"\033[0m"
 # define RED       	"\033[31m"      
@@ -19,5 +18,3 @@
 //#define PRINT_COLOR(color, text) (std::cout << color << text << RESET)
 
 #include <iostream>
-
-#endif // MAIN_H

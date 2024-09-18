@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:25:48 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:25:59 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#pragma once
 #include <iostream>
-//#include <>
 
 class Fixed
 {
@@ -43,8 +55,4 @@ class Fixed
 		bool	operator>=(const Fixed &fixed);
 		bool	operator==(const Fixed &fixed);
 		bool	operator!=(const Fixed &fixed);
-		
-
-
-
 };

@@ -1,6 +1,16 @@
-#ifndef MAIN_HPP
-# define MAIN_HPP
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:08:26 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:08:27 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#pragma once
 # include <iostream>
 
 # define RESET       "\033[0m"
@@ -20,5 +30,3 @@
 # define BOLD_WHITE  "\033[1m\033[37m"      /* Bold White */
 
 //#define PRINT_COLOR(color, text) (std::cout << color << text << RESET)
-
-#endif // MAIN_HPP

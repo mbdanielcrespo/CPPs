@@ -1,7 +1,18 @@
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP 
-# include <iostream>
-# include <iomanip>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:13:18 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:13:20 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#pragma once
+#include <iostream>
+#include <iomanip>
 
 class Zombie
 {
@@ -14,5 +25,3 @@ class Zombie
 	private:
 		std::string	_name;
 };
-
-#endif // ZOMBIE_HPP

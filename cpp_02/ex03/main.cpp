@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:27:18 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:27:18 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <Point.hpp>
 
-bool bsp(const Point a, const Point b, const Point c, const Point point);
+//bool Point::bsp(const Point a, const Point b, const Point c, const Point point);
 
 int main() {
 	Point A(0, 0);

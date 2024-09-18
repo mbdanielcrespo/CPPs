@@ -1,9 +1,19 @@
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
-# include <iostream>
-# include <string.h>
-# include <iomanip>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:07:53 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:07:55 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#pragma once
+#include <iostream>
+#include <string.h>
+#include <iomanip>
 
 class Contact 
 {
@@ -22,6 +32,7 @@ class Contact
 
 		static Contact	add_contact();
 		void			display() const;
+		bool 			isValid(void);
 
 	public:
 		std::string first_name;
@@ -30,7 +41,3 @@ class Contact
 		std::string phone_number;
 		std::string darkest_secret;
 };
-
-
-
-#endif

@@ -1,5 +1,16 @@
-#ifndef MAIN_H
-# define MAIN_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:23:55 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:24:16 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#pragma once
 
 # define RESET     	"\033[0m"
 # define RED       	"\033[31m"      
@@ -19,5 +30,3 @@
 //#define PRINT_COLOR(color, text) (std::cout << color << text << RESET)
 
 #include <iostream>
-
-#endif // MAIN_H
