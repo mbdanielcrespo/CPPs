@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,16 +14,16 @@
 #include <main.h>
 #include <iostream>
 
-class Animal
+class WrongAnimal
 {
 	protected:
 		std::string _type;
 	public:
-		Animal();
-		Animal(Animal& cp);
-		Animal&operator=(const Animal& cp);
-		virtual ~Animal();
+		WrongAnimal();
+		WrongAnimal(WrongAnimal& cp);
+		WrongAnimal&operator=(const WrongAnimal& cp);
+		virtual ~WrongAnimal();
 
 		std::string		getType(void) const;
-		virtual void 	makeSound(void) const;
+		void 	makeSound(void) const;
 };

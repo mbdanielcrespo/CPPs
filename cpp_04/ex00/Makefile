@@ -7,7 +7,7 @@ RM = rm -rf
 
 OBJDIR = obj
 
-SRC = main.cpp Cat.cpp Dog.cpp Animal.cpp
+SRC = main.cpp Cat.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp
 INC = 
 OBJ	= $(SRC:%.cpp=$(OBJDIR)/%.o)
 

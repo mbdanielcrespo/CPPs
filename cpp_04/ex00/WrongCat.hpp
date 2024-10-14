@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   	.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,15 +11,15 @@
 /* ************************************************************************** */
 
 #pragma once
-#include <Animal.hpp>
+#include <WrongAnimal.hpp>
 
-class Cat : public Animal
+class WrongCat : public WrongAnimal
 {
 	public:
-		Cat();
-		Cat(Cat& cp);
-		Cat&operator=(const Cat& cp);
-		virtual ~Cat();
+		WrongCat();
+		WrongCat(WrongCat& cp);
+		WrongCat&operator=(const WrongCat& cp);
+		virtual ~WrongCat();
 
 		void		makeSound(void) const;
 };

@@ -12,13 +12,13 @@
 
 #include <Cat.hpp>
 
-Cat::Cat(void)
+Cat::Cat(void) : _brain(new Brain())
 {
 	std::cout << GREEN << "Cat default constructor called!" << RESET << std::endl;
 	this->_type = "Cat";
 }
 
-Cat::Cat(Cat& cp) : Animal(cp)
+Cat::Cat(Cat& cp) : Animal(cp), _brain(new Brain(*cp._brain))
 {
 	std::cout << GREEN << "Cat copy constructor called!" << RESET << std::endl;
 	this->_type = cp._type;
@@ -30,15 +30,16 @@ Cat& Cat::operator=(const Cat& cp)
 	if (this != &cp)
 	{
 		Animal::operator=(cp);
-		this->_type = cp._type;
+        delete this->_brain;
+        this->_brain = new Brain(*cp._brain);
 	}
 	return (*this);
 }
 
 Cat::~Cat(void)
 {
-	delete this->_brain;
 	std::cout << RED << "Cat default destructor called!" << RESET << std::endl;
+	delete this->_brain;
 }
 
 void	Cat::makeSound(void) const

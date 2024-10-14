@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,37 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Cat.hpp>
+#include <WrongCat.hpp>
 
-Cat::Cat(void)
+WrongCat::WrongCat(void)
 {
-	std::cout << GREEN << "Cat default constructor called!" << RESET << std::endl;
-	this->_type = "Cat";
+	std::cout << GREEN << "WrongCat default constructor called!" << RESET << std::endl;
+	this->_type = "WrongCat";
 }
 
-Cat::Cat(Cat& cp) : Animal(cp)
+WrongCat::WrongCat(WrongCat& cp) : WrongAnimal(cp)
 {
-	std::cout << GREEN << "Cat copy constructor called!" << RESET << std::endl;
+	std::cout << GREEN << "WrongCat copy constructor called!" << RESET << std::endl;
 	this->_type = cp._type;
 }
 
-Cat& Cat::operator=(const Cat& cp)
+WrongCat& WrongCat::operator=(const WrongCat& cp)
 {
-	std::cout << GREEN << "Cat assignment operator called!" << RESET << std::endl;
+	std::cout << GREEN << "WrongCat assignment operator called!" << RESET << std::endl;
 	if (this != &cp)
 	{
-		Animal::operator=(cp);
+		WrongAnimal::operator=(cp);
 		this->_type = cp._type;
 	}
 	return (*this);
 }
 
-Cat::~Cat(void)
+WrongCat::~WrongCat(void)
 {
-	std::cout << RED << "Cat default destructor called!" << RESET << std::endl;
+	std::cout << RED << "WrongCat default destructor called!" << RESET << std::endl;
 }
 
-void Cat::makeSound(void) const
+void WrongCat::makeSound(void) const
 {
-	std::cout << YELLOW << "Miauuuuu" << RESET << std::endl;
+	std::cout << CYAN << "Miauuuuu but pronunced wrongly" << RESET << std::endl;
 }
