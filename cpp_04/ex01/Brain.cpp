@@ -1,17 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/14 13:10:00 by danalmei          #+#    #+#             */
+/*   Updated: 2024/10/14 13:10:00 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <Brain.hpp>
 
 Brain::Brain(void)
 {
 	std::cout << GREEN << "Brain default constructor called!" << RESET << std::endl;
-	int i = 0;
-	while (i < 100)
-		this->ideas[i++] = "crazy idea! ... ";	
 }
 
 Brain::Brain(Brain& cp)
 {
 	std::cout << GREEN << "Brain copy constructor called!" << RESET << std::endl;
-	*this->ideas = *cp.ideas	;
+	*this = cp;
+}
+
+Brain& Brain::operator=(const Brain& cp)
+{
+    std::cout << "Brain assignment operator called!" << std::endl;
+    if (this != &cp)
+    {
+        for (int i = 0; i < 100; ++i)
+            this->ideas[i] = cp.ideas[i];
+    }
+    return *this;
 }
 
 Brain::~Brain(void)
@@ -19,17 +39,15 @@ Brain::~Brain(void)
 	std::cout << RED << "Brain default destructor called!" << RESET << std::endl;
 }
 
-Brain& Brain::operator=(const Brain& cp)
+void Brain::setIdea(int index, const std::string& idea)
 {
-	std::cout << GREEN << "Brain assignment operator called!" << RESET << std::endl;
-	*this->ideas = *cp.ideas; 
-	return (*this);
+    if (index >= 0 && index < 100)
+        ideas[index] = idea;
 }
 
-void	Brain::shareIdea(int index)
+std::string Brain::getIdea(int index) const
 {
-	if (index >= 100 || index < 0)
-		std::cout << RED << "You're thinking out of bounds" << RESET << std::endl;
-	else
-		std::cout << MAGENTA << ideas[index] << RESET << std::endl;
+    if (index >= 0 && index < 100)
+        return ideas[index];
+    return "Blip Blip ... Mental Breakdown xP";
 }

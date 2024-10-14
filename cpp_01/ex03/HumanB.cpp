@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:18:01 by danalmei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:18:03 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/10/10 09:42:05 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ HumanB::HumanB(std::string name)
 
 HumanB::~HumanB()
 {
-	std::cout << GREEN << "HumanB destroyed successfully!" << RESET << std::endl;
+	std::cout << RED << "HumanB destroyed successfully!" << RESET << std::endl;
 }
 
 void	HumanB::setWeapon(Weapon *weapon)
@@ -31,5 +31,5 @@ void	HumanB::setWeapon(Weapon *weapon)
 
 void	HumanB::attack(void)
 {
-	std::cout << this->_name << " attacks with " << this->_weapon->getType() << std::endl;
+	std::cout << YELLOW << this->_name << " attacks with " << this->_weapon->getType() << RESET << std::endl;
 }

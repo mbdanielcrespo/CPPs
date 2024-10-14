@@ -12,8 +12,6 @@
 
 #include <Point.hpp>
 
-//bool Point::bsp(const Point a, const Point b, const Point c, const Point point);
-
 int main() {
 	Point A(0, 0);
 	Point B(5, 0);

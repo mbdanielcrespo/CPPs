@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:20:12 by danalmei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:20:13 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:39:04 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Weapon::Weapon(std::string type)
 
 Weapon::~Weapon()
 {
-	std::cout << GREEN << "Weapon destroyes successfully!" << RESET << std::endl;
+	std::cout << RED << "Weapon destroyes successfully!" << RESET << std::endl;
 }
 
 std::string	Weapon::getType() const

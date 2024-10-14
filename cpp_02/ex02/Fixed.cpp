@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:25:37 by danalmei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:25:39 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:51:07 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,17 +145,10 @@ Fixed	Fixed::operator/(const Fixed &fixed)
 	return (tmp);
 }
 
-
-
-
+	
 float	Fixed::toFloat(void) const
 {
 	return (float(this->num) / (float)(1 << this->bit_fraction));
-}
-
-std::ostream&operator<<(std::ostream &os, const Fixed &obj)
-{
-	return (os << obj.toFloat());
 }
 
 int		Fixed::toInt(void) const
@@ -201,4 +194,10 @@ const Fixed&	Fixed::max(const Fixed &fix1, const Fixed &fix2)
 	if (fix1.num >= fix2.num)
 		return (fix1);
 	return (fix2);
+}
+
+std::ostream& operator<<(std::ostream &os, const Fixed &obj)
+{
+    os << obj.toFloat();
+    return os;
 }

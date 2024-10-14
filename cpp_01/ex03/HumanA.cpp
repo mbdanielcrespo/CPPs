@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:17:48 by danalmei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:17:50 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/10/10 09:40:42 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ HumanA::HumanA(std::string name, Weapon *weapon)
 
 HumanA::~HumanA()
 {
-	std::cout << GREEN << "HumanA destroyed successfully!" << RESET << std::endl;
+	std::cout << RED << "HumanA destroyed successfully!" << RESET << std::endl;
 }
 
 void	HumanA::attack(void)
 {
-	std::cout << this->_name << " attacks with " << this->_weapon->getType() << std::endl;
+	std::cout << YELLOW << this->_name << " attacks with " << this->_weapon->getType() << RESET << std::endl;
 }

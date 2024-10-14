@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:07:53 by danalmei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:07:55 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:45:13 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ class Contact
 {
 	public:
 		Contact();
-	    //~Contact();
-    	//Contact(const Contact &other);
-    	//Contact& operator=(const Contact &other);
 		Contact (
 			std::string first_name,
 			std::string last_name,

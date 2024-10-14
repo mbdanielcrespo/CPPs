@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.h                                           :+:      :+:    :+:   */
+/*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:18:57 by danalmei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:19:00 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/10/09 15:33:20 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-#include <Zombie.hpp>
+#pragma once	
 #include <iostream>
 
 # define RESET     	"\033[0m"
@@ -31,6 +30,3 @@
 # define B_WHITE  	"\033[1m\033[37m" 
 
 //#define PRINT_COLOR(color, text) (std::cout << color << text << RESET)
-
-Zombie *newZombie(std::string name);
-void	randomChump(std::string name);

@@ -1,4 +1,4 @@
-NAME = ZombieHorde
+NAME = Referencing
 
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -I.

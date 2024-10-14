@@ -1,6 +1,6 @@
 NAME = AbstractClass
 
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -I.
 
 RM = rm -rf

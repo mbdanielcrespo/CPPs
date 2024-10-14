@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:20:53 by danalmei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:20:56 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/10/10 09:45:13 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ Harl::Harl(void)
 	funcs[1] = &Harl::info;
 	funcs[2] = &Harl::warning;
 	funcs[3] = &Harl::error;
-
 }
 
 void	Harl::complain(std::string level)

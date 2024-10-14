@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 14:33:40 by danalmei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:33:40 by danalmei         ###   ########.fr       */
+/*   Created: 2024/09/18 14:31:38 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:31:38 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,3 @@ class ScavTrap : virtual public ClapTrap
 		void	attack(const std::string& target);
 		void	guardGate(void);
 };
-

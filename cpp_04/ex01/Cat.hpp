@@ -1,11 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/14 13:06:07 by danalmei          #+#    #+#             */
+/*   Updated: 2024/10/14 13:06:07 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 #include <Animal.hpp>
 #include <Brain.hpp>
 
 class Cat : public Animal
 {
-	private:
-		Brain*	_brain;
 	public:
 		Cat();
 		Cat(Cat& cp);
@@ -13,11 +23,5 @@ class Cat : public Animal
 		virtual ~Cat();
 
 		void		makeSound(void) const;
-		std::string	getType(void) const;
-
-		void	setBrain(Brain* newBrain);
-		Brain*	getBrain(void) const;
-
-
 };
 

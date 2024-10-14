@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:24:41 by danalmei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:24:43 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:49:31 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,6 @@ Fixed&Fixed::operator=(const Fixed &fixed)
 	return (*this);
 }
 
-std::ostream&operator<<(std::ostream &os, const Fixed &obj)
-{
-	return (os << obj.toFloat());
-}
-
 float	Fixed::toFloat(void) const
 {
 	return (float(this->num) / (float)(1 << this->bit_fraction));
@@ -71,4 +66,10 @@ int Fixed::getRawBits(void) const
 void Fixed::setRawBits(int const raw)
 {
 	this->num = raw;
+}
+
+std::ostream& operator<<(std::ostream &os, const Fixed &obj)
+{
+    os << obj.toFloat();
+    return os;
 }

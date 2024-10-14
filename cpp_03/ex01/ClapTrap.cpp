@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:30:01 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:30:01 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ClapTrap.hpp>
 
 ClapTrap::ClapTrap()
 {
-	std::cout << GREEN << "Default constructor called!" << RESET << std::endl;
+	std::cout << GREEN << "ClapTrap Default constructor called!" << RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name, int health, int energy, int attack) : _name(name), _health(health)
 {
 	this->_attack = attack;
 	this->_energy = energy;
-	std::cout << GREEN << "Atributte constructor called!" << RESET << std::endl;
+	std::cout << GREEN << "ClapTrap Atributte constructor called!" << RESET << std::endl;
 	std::cout << YELLOW << "Name: " << _name << RESET << std::endl;
 	std::cout << YELLOW << "Health: " << _health << RESET << std::endl;
 	std::cout << YELLOW << "Energy: " << _energy << RESET << std::endl;
@@ -18,19 +30,17 @@ ClapTrap::ClapTrap(std::string name, int health, int energy, int attack) : _name
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << RED << "Default destructor called!" << RESET << std::endl;
+	std::cout << RED << "ClapTrap Default destructor called!" << RESET << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &cp) : _name(cp._name)
+ClapTrap::ClapTrap(const ClapTrap &cp) : _name(cp._name), _health(cp._health), _energy(cp._energy), _attack(cp._attack)
 {
-	std::cout << "ClapTrap " << _name;
-	std::cout << " constructor called" << std::endl;
-	*this = cp;
+    std::cout << GREEN << "ClapTrap " << _name << " copy constructor called" << RESET << std::endl;
 }
 
 ClapTrap& 	ClapTrap::operator=(const ClapTrap &cp)
 {
-	std::cout << GREEN << "Copy constructor called!" << RESET << std::endl;
+	std::cout << GREEN << "ClapTrap assignment operator called!" << RESET << std::endl;
 	if (this == &cp)
 		return (*this);
 	this->_name = cp._name;
@@ -42,9 +52,10 @@ ClapTrap& 	ClapTrap::operator=(const ClapTrap &cp)
 
 void	ClapTrap::attack(const std::string& target)
 {
-	std::cout << YELLOW << "Claptrap " << this->_name;
+	//std::cout << YELLOW << "Claptrap ";
+	std::cout << YELLOW << this->_name;
 	if (_attack <= 0 || _energy <= 0)
-		std::cout << " is no able to attack!" << std::endl;
+		std::cout << " is not able to attack!" << std::endl;
 	else
 	{
 		_energy -= 1;
@@ -54,16 +65,25 @@ void	ClapTrap::attack(const std::string& target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
+	//std::cout << "Claptrap ";
 	this->_health -= amount;
-	std::cout << YELLOW << "Claptrap " << this->_name << " took " << amount << " damage points!" << RESET << std::endl;
+	std::cout << YELLOW << this->_name << " took " << amount << " damage points!" << RESET << std::endl;
 	if (this->_health <= 0)
-		std::cout << B_YELLOW << "Claptrap " << this->_name << "died!" << RESET << std::endl;
+		std::cout << B_RED << this->_name << " died!" << RESET << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	std::cout << YELLOW << "Claptrap " << this->_name << " restored " << amount << " health points!" << RESET << std::endl;
-	this->_health += amount;
+	//std::cout << YELLOW << "Claptrap ";
+	std::cout << YELLOW << this->_name;
+	if (amount <= 0 || _energy <= 0)
+		std::cout << " is not able to repair!" << RESET << std::endl;
+	else
+	{
+		this->_health += amount;
+		_energy -= 1;
+		std::cout << " restored " << amount << " health points!" << RESET << std::endl;
+	}
 }
 
 void	ClapTrap::printStats(void)
@@ -92,4 +112,24 @@ const int	&ClapTrap::getEnergy() const
 const int	&ClapTrap::getAttack() const
 {
 	return (this->_attack);
+}
+
+void ClapTrap::setName(const std::string &name)
+{
+    this->_name = name;
+}
+
+void ClapTrap::setHealth(int health)
+{
+    this->_health = health;
+}
+
+void ClapTrap::setEnergy(int energy)
+{
+    this->_energy = energy;
+}
+
+void ClapTrap::setAttack(int attack)
+{
+    this->_attack = attack;
 }

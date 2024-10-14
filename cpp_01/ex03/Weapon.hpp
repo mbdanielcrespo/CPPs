@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:20:19 by danalmei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:20:21 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:38:48 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 
 class Weapon
 {
-private:
-	std::string	_type;
-public:
-	Weapon(std::string type);
-	~Weapon();
+	private:
+		std::string	_type;
+	public:
+		Weapon(std::string type);
+		~Weapon();
 
-	std::string getType() const;
-	void	setType(std::string type);
+		std::string getType() const;
+		void	setType(std::string type);
 };
 
 
