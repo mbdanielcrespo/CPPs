@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/17 21:55:00 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/17 21:55:00 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 #include <AForm.hpp>
 #include <fstream> 
@@ -10,9 +22,9 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm(void);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& cp);
 		ShrubberyCreationForm(const ShrubberyCreationForm& cp);
-		~ShrubberyCreationForm();
+		virtual ~ShrubberyCreationForm();
 
 		ShrubberyCreationForm(const std::string& target);
 
-		void execute(const Bureaucrat& executor) const;
+		virtual void executeAction() const;
 };

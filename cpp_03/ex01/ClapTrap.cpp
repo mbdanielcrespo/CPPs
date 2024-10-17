@@ -94,7 +94,7 @@ void	ClapTrap::printStats(void)
 	std::cout << YELLOW << "Attack: " << this->_attack << RESET << std::endl;
 }
 
-const std::string	&ClapTrap::getName(void) const
+/*const std::string	&ClapTrap::getName(void) const
 {
 	return (this->_name);
 }
@@ -132,4 +132,4 @@ void ClapTrap::setEnergy(int energy)
 void ClapTrap::setAttack(int attack)
 {
     this->_attack = attack;
-}
+}*/

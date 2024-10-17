@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/17 21:55:24 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/17 21:55:24 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <PresidentialPardonForm.hpp>
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), _target("default_target")
@@ -29,12 +41,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 	std::cout << RED << "Default PresidentialPardonForm destructor called!" << RESET << std::endl;
 }
 
-void PresidentialPardonForm::execute(const Bureaucrat& executor) const
+void PresidentialPardonForm::executeAction() const
 {
-    if (!isSigned())
-        throw AForm::GradeTooLowException();
-    if (executor.getGrade() > getExecGrade())
-        throw AForm::GradeTooLowException();
-
-    std::cout << YELLOW << _target << " has been pardoned by Zaphod Beeblebrox." << RESET << std::endl;
+	std::cout << YELLOW << _target << " has been pardoned by Zaphod Beeblebrox." << RESET << std::endl;
 }

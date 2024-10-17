@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/17 21:09:40 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/17 21:09:40 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 #include <Bureaucrat.hpp>
 #include <main.h>
@@ -15,20 +27,25 @@ class AForm
 		AForm(void);
 		AForm& operator=(const AForm& cp);
 		AForm(const AForm& cp);
-		AForm(const std::string name, const int req_grade, const int exec_grade);
 		virtual ~AForm(void);
 
+		AForm(const std::string name, const int req_grade, const int exec_grade);
+
 		const std::string getName(void) const;
-		bool isSigned(void) const;
+		bool getSigning(void) const;
 		int getReqGrade(void) const;
 		int getExecGrade(void) const;
+
+		void beSigned(const Bureaucrat& bur);
+		void execute(const Bureaucrat &bur) const;
+		virtual void executeAction() const = 0;
 
 		class GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char* what() const throw()
 				{
-					return "AForm grade is too high";
+					return "Form grade is too high";
 				}
 		};
 
@@ -37,18 +54,18 @@ class AForm
 			public:
 				virtual const char* what() const throw()
 				{
-					return "AForm grade was too low";
+					return "Form grade was too low";
 				}
 		};
 
-		class FormNotSignedException : public std::exception {
-		public:
-			const char* what() const throw() {
-				return "Form is not signed!";
-			}
+		class FormNotSignedException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return "Form was't signed";
+				}
 		};
-
-		bool beSigned(Bureaucrat& bur);
-		friend std::ostream& operator<<(std::ostream& os, const AForm& obj);
-		virtual void execute(Bureaucrat const & executor) const = 0;
 };
+
+std::ostream& operator<<(std::ostream& os, const AForm& obj);

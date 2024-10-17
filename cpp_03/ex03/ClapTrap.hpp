@@ -15,7 +15,7 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 		std::string	_name;
 		int			_health;
 		int			_energy;
@@ -23,21 +23,22 @@ class ClapTrap
 	public:
 		ClapTrap();
 		ClapTrap(std::string name, int health, int energy, int attack);
+		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &cp);
 		ClapTrap&operator=(const ClapTrap &cp);
 		~ClapTrap();
 
-		void	attack(const std::string& target);
-		void	takeDamage(unsigned int amount);
-		void	beRepaired(unsigned int amount);
-		void	printStats(void);
+		virtual void	attack(const std::string& target);
+		virtual void	takeDamage(unsigned int amount);
+		virtual void	beRepaired(unsigned int amount);
+		virtual void	printStats(void);
 
-		const	std::string	&getName(void) const;
-		const	int			&getHealth(void) const;
-		const	int			&getEnergy(void) const;
-		const	int			&getAttack(void) const;
-		void 				setName(const std::string &name);
-		void 				setHealth(int health);
-		void 				setEnergy(int energy);
-		void 				setAttack(int attack);
+		//const	std::string	&getName(void) const;
+		//const	int			&getHealth(void) const;
+		//const	int			&getEnergy(void) const;
+		//const	int			&getAttack(void) const;
+		//void 				setName(const std::string &name);
+		//void 				setHealth(int health);
+		//void 				setEnergy(int energy);
+		//void 				setAttack(int attack);
 };

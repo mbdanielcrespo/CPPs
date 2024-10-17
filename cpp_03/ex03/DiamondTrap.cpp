@@ -1,28 +1,27 @@
 #include <DiamondTrap.hpp>
 #include <main.h>
 
-DiamondTrap::DiamondTrap(void)
-    : ClapTrap("DiamondTrap_clap_name", 100, 50, 30), ScavTrap(), FragTrap(), _name("DiamondTrap")
+DiamondTrap::DiamondTrap(void) :  ScavTrap(), FragTrap(), _name("DiamondTrap")
 {
-    setHealth(100);
-    setEnergy(50); 
-    setAttack(30); 
     std::cout << GREEN << "DiamondTrap " << this->_name << " default constructor called!" << RESET << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const std::string& newname)
-    : ClapTrap(newname + "_clap_name", 100, 50, 30), ScavTrap(), FragTrap(), _name(newname)
+    :   ClapTrap(newname + "_clap_name"),
+        ScavTrap(newname), FragTrap(newname)
 {
-    setHealth(100);
-    setEnergy(50); 
-    setAttack(30); 
+    this->_name = newname;
+    this->ClapTrap::_name = newname + "_clap_name";
+    this->_health = FragTrap::_health;
+    this->_energy = ScavTrap::_energy;
+    this->_attack = FragTrap::_attack;
     std::cout << GREEN << "DiamondTrap " << this->_name << " attribute constructor called!" << RESET << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& cp)
-    : ClapTrap(cp), ScavTrap(cp), FragTrap(cp), _name(cp._name)
+DiamondTrap::DiamondTrap(const DiamondTrap& cp) : ClapTrap(cp), ScavTrap(cp), FragTrap(cp)
 {
     std::cout << GREEN << "DiamondTrap copy constructor called!" << RESET << std::endl;
+    *this = cp;
 }
 
 DiamondTrap::~DiamondTrap(void)
@@ -33,15 +32,14 @@ DiamondTrap::~DiamondTrap(void)
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap &cp)
 {
     std::cout << GREEN << "DiamondTrap copy assignment operator called!" << RESET << std::endl;
-    if (this != &cp)
-    {
-        ClapTrap::operator=(cp);
-        this->_name = cp._name;
-    }
+    this->_name = cp._name;
+    this->_health = cp._health;
+    this->_energy = cp._energy;
+    this->_attack = cp._attack;
     return *this;
 }
 
 void DiamondTrap::whoAmI(void) const
 {
-    std::cout << BLUE << "I am " << this->_name << " and my ClapTrap name is " << ClapTrap::getName() << "!" << RESET << std::endl;
+    std::cout << BLUE << "I am " << this->_name << " and my ClapTrap name is " << ClapTrap::_name << "!" << RESET << std::endl;
 }

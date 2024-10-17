@@ -3,20 +3,39 @@
 
 int main()
 {
-    Intern someRandomIntern;
+	try
+	{
+		Intern someRandomIntern;
 
-    AForm* form1 = someRandomIntern.makeForm("robotomy request", "Bender");
-    if (form1) {
-        // Use the form as needed, e.g., sign and execute it
+        AForm* form2 = someRandomIntern.makeForm("unknown form", "Target");
+
+        Bureaucrat npc1("npc1", 140);
+
+        AForm* form1 = someRandomIntern.makeForm("robotomy request", "Bender");
+        AForm* shrubbery = someRandomIntern.makeForm("shrubbery creation", "Home");
+        AForm* pardon = someRandomIntern.makeForm("presidential pardon", "Criminal");
+
+        if (form1) std::cout << *form1 << std::endl;
+        if (shrubbery) std::cout << *shrubbery << std::endl;
+        if (pardon) std::cout << *pardon << std::endl;
+
+        npc1.signForm(*form1);    
+        npc1.signForm(*shrubbery);
+        npc1.signForm(*pardon);   
+
+        npc1.executeForm(*shrubbery);
+        npc1.executeForm(*form1);    
+        npc1.executeForm(*pardon);   
+
         delete form1;
-    }
-
-    AForm* form2 = someRandomIntern.makeForm("unknown form", "Target");
-    if (form2) {
-        // This should not be reached if the form name is unknown
+        delete shrubbery;
+        delete pardon;
         delete form2;
     }
-
+	catch (const std::exception& e)
+	{
+        std::cerr << e.what() << std::endl;
+    }
     return 0;
 }
 

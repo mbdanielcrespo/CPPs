@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/17 19:44:53 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/17 19:44:53 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 #include <ICharacter.hpp>
 #include <AMateria.hpp>
@@ -5,17 +17,16 @@
 
 class Character : public ICharacter
 {
-	protected:
+	private:
 		std::string _name;
 		AMateria* _materias[4];
-		static int _materia_slots;
 	public:
 		Character(void);
-		Character(Character& cp);
+		Character(const std::string& name);
+		Character(const Character& cp);
 		Character&operator=(const Character cp);
-		~Character(void);
+		virtual ~Character();
 
-		Character(std::string name);
 		const std::string& getName() const;
 		void equip(AMateria* m);
 		void unequip(int idx);

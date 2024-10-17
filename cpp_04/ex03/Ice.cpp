@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/17 19:45:11 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/17 19:45:11 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <Ice.hpp>
 #include <main.h>
 
@@ -14,7 +26,7 @@ Ice::Ice(const Ice& cp) : AMateria(cp)
 Ice&	Ice::operator=(const Ice& cp)
 {
 	std::cout << GREEN << "Ice assignment operator called" << RESET << std::endl;
-	if (this != &cp)	// Prevent self-assignment
+	if (this != &cp)
         AMateria::operator=(cp);
     return *this;
 }

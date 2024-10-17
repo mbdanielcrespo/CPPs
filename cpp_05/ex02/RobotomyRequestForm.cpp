@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/17 21:55:29 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/17 21:55:29 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <RobotomyRequestForm.hpp>
 #include <cstdlib> 
 
@@ -30,17 +42,12 @@ RobotomyRequestForm::~RobotomyRequestForm()
 	std::cout << RED << "Default RobotomyRequestForm destructor called!" << RESET << std::endl;
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat& executor) const
+void RobotomyRequestForm::executeAction() const
 {
-    if (!isSigned())
-        throw AForm::GradeTooLowException();
-    if (executor.getGrade() > getExecGrade())
-        throw AForm::GradeTooLowException();
+	std::cout << YELLOW << "Bzzt... Bzzt... Drilling noises..." << RESET << std::endl;
 
-    std::cout << YELLOW << "Bzzt... Bzzt... Drilling noises..." << RESET << std::endl;
-
-    if (std::rand() % 2 == 0)
-        std::cout << YELLOW << _target << " has been robotomized successfully." << RESET << std::endl;
-    else
-        std::cout << YELLOW << "The robotomy on " << _target << " failed." << RESET << std::endl;
+	if (std::rand() % 2 == 0)
+		std::cout << YELLOW << _target << " has been robotomized successfully." << RESET << std::endl;
+	else
+		std::cout << YELLOW << "The robotomy on " << _target << " failed." << RESET << std::endl;
 }

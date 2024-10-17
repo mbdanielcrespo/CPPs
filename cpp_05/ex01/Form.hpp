@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/17 21:09:40 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/17 21:09:40 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 #include <Bureaucrat.hpp>
 #include <main.h>
@@ -23,6 +35,7 @@ class Form
 		bool getSigning(void) const;
 		int getReqGrade(void) const;
 		int getExecGrade(void) const;
+		void beSigned(Bureaucrat& bur);
 
 		class GradeTooHighException : public std::exception
 		{
@@ -41,7 +54,6 @@ class Form
 					return "Form grade was too low";
 				}
 		};
-
-		bool beSigned(Bureaucrat& bur);
-		friend std::ostream& operator<<(std::ostream& os, const Form& obj);
 };
+
+std::ostream& operator<<(std::ostream& os, const Form& obj);

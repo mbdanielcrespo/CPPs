@@ -43,25 +43,25 @@ FragTrap::~FragTrap(void)
 
 void	FragTrap::attack(const std::string& target)
 {
-	//std::cout << YELLOW << "FragTrap " << getName();
-	std::cout << YELLOW << this->getName();
-	if (getAttack() <= 0 || getEnergy() <= 0)
+	//std::cout << YELLOW << "FragTrap " << _name;
+	std::cout << YELLOW << this->_name;
+	if (_attack <= 0 || _energy <= 0)
 		std::cout << " is not able to attack!" << std::endl;
 	else
 	{
-		setEnergy(getEnergy() - 1);
-		std::cout << " attacks " << target << " causing " << this->getAttack() << " points of damage!" << RESET << std::endl;
+		this->_energy -= 1;
+		std::cout << " attacks " << target << " causing " << this->_attack << " points of damage!" << RESET << std::endl;
 	}
 }
 
 void	FragTrap::guardGate(void)
 {
 	//std::cout << YELLOW << "FragTrap ";
-	std::cout << YELLOW << getName() << " is now in Gate Keeper Mode!" << RESET << std::endl;
+	std::cout << YELLOW << _name << " is now in Gate Keeper Mode!" << RESET << std::endl;
 }
 
 void	FragTrap::highFiveGuys(void)
 {
 	//std::cout << YELLOW << "FragTrap "; 
-	std::cout << YELLOW << getName() << " gave a proper highfive to their counterparts!" << RESET << std::endl;
+	std::cout << YELLOW << _name << " gave a proper highfive to their counterparts!" << RESET << std::endl;
 }

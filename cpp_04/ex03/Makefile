@@ -1,8 +1,7 @@
 NAME = Interface
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -I.
-
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
 RM = rm -rf
 
 OBJDIR = obj

@@ -16,9 +16,10 @@ int main()
 {
     try 
 	{
-        Bureaucrat b;
-		std::cout << YELLOW << b << RESET << std::endl;
-		Bureaucrat a("Paco", 200);
+        Bureaucrat a("Juan", 120);
+		std::cout << YELLOW << a << RESET << std::endl;
+		Bureaucrat b("Paco", 200);
+		std::cout << YELLOW << a << RESET << std::endl;
     } 
 	catch (const Bureaucrat::GradeTooHighException& e)
 	{
@@ -32,5 +33,6 @@ int main()
 	{
         std::cerr << RED << "An unexpected error occurred: " << RESET << e.what() << std::endl;
     }
+    
     return 0;
 }

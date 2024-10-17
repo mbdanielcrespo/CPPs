@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/17 19:45:36 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/17 19:45:36 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 #include <IMateriaSource.hpp>
 
@@ -8,7 +20,7 @@ class MateriaSource : public IMateriaSource
 		static int _materia_count;
 	public:
 		MateriaSource();
-		MateriaSource(MateriaSource& cp);
+		MateriaSource(const MateriaSource& cp);
 		MateriaSource&operator=(const MateriaSource& cp);
 		~MateriaSource();
 

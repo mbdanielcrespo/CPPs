@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/17 19:45:33 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/17 19:45:33 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <MateriaSource.hpp>
 #include <AMateria.hpp>
 #include <main.h>
@@ -11,7 +23,7 @@ MateriaSource::MateriaSource() : IMateriaSource()
         _materias[i] = NULL;
 }
 
-MateriaSource::MateriaSource(MateriaSource& cp)
+MateriaSource::MateriaSource(const MateriaSource& cp)
 {
 	std::cout << GREEN << "MateriaSource copy constructor called" << RESET << std::endl;
 	for (int i = 0; i < 4; ++i)

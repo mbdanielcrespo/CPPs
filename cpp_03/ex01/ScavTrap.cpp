@@ -38,24 +38,24 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &cp)
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << RED << "ScavTrap " << getName() << " Default destructor called!" << RESET << std::endl;
+	std::cout << RED << "ScavTrap " << _name << " Default destructor called!" << RESET << std::endl;
 }
 
 void	ScavTrap::attack(const std::string& target)
 {
 	//std::cout << YELLOW << "ScavTrap ";
-	std::cout << YELLOW << this->getName();
-	if (getAttack() <= 0 || getEnergy() <= 0)
+	std::cout << YELLOW << this->_name;
+	if (_attack <= 0 || _energy <= 0)
 		std::cout << " is not able to attack!" << std::endl;
 	else
 	{
-		setEnergy(getEnergy() - 1);
-		std::cout << " attacks " << target << " causing " << this->getAttack() << " points of damage!" << RESET << std::endl;
+		this->_energy -= 1;
+		std::cout << " attacks " << target << " causing " << this->_attack << " points of damage!" << RESET << std::endl;
 	}
 }
 
 void	ScavTrap::guardGate(void)
 {
 	//std::cout << YELLOW << "ScavTrap ";
-	std::cout << YELLOW << getName() << " is now in Gate Keeper Mode!" << RESET << std::endl;
+	std::cout << YELLOW << _name << " is now in Gate Keeper Mode!" << RESET << std::endl;
 }

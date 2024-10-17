@@ -1,19 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/17 19:44:47 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/17 19:44:47 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <main.h>
 #include <Ice.hpp>
 #include <Cure.hpp>
 #include <Character.hpp>
 
-int Character::_materia_slots = 4;
-
-
 Character::Character()
 {
 	std::cout << GREEN << "Character default constructor called" << RESET << std::endl;
 	for (int i = 0; i < 4; ++i)
-        _materias[i] = NULL;  // Use NULL instead of nullptr
+        _materias[i] = NULL;  // Use NULL instead of NUL
 }
 
-Character::Character(Character& cp)
+Character::Character(const Character& cp)
 {
 	std::cout << GREEN << "Character copy constructor called" << RESET << std::endl;
 	*this = cp;
@@ -24,20 +33,31 @@ Character&	Character::operator=(const Character cp)
 	std::cout << GREEN << "Character assignment operator called" << RESET << std::endl;
 	if (this != &cp)
 	{
-	}
-	return (*this);
+        _name = cp._name;
+        for (int i = 0; i < 4; i++)
+		{
+            delete _materias[i];
+            if (cp._materias[i])
+                _materias[i] = cp._materias[i]->clone();
+            else
+                _materias[i] = NULL;
+        }
+    }
+    return *this;
 }
 
 Character::~Character()
 {
 	std::cout << RED << "Character default destructor called" << RESET << std::endl;
+	for (int i = 0; i < 4; i++)
+        delete _materias[i];
 }
 
-Character::Character(std::string name)
+Character::Character(const std::string& name) : _name(name)
 {
 	std::cout << GREEN << "Character attribute constructor called" << RESET << std::endl;
-	this->_name = name;
-	this->_materia_slots = 0;
+	for (int i = 0; i < 4; i++)
+        _materias[i] = NULL;
 }
 
 const std::string& Character::getName() const
@@ -60,18 +80,13 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-	if (idx >= 0 && idx >= 3)
-	{
-		if (_materias[idx] != NULL)
-			_materias[idx] = NULL;
-	}
+	if (idx >= 0 && idx >= 3 && _materias[idx] != NULL)
+		_materias[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx >= 0 && idx < 4)
-	{	
-		if (_materias[idx] != NULL)
+	std::cout << CYAN << this->getName() << ": " << RESET;
+	if (idx >= 0 && idx < 4 && _materias[idx])
 			_materias[idx]->use(target);
-	}
 }

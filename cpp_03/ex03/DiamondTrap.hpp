@@ -15,10 +15,5 @@ class DiamondTrap : public ScavTrap, public FragTrap
 			
 		DiamondTrap& operator=(const DiamondTrap &cp);
 
-		using ScavTrap::attack;
-		using ScavTrap::guardGate;
-		using FragTrap::highFiveGuys;
-		using ClapTrap::takeDamage;
-		using ClapTrap::beRepaired;
 		void whoAmI() const;
 };

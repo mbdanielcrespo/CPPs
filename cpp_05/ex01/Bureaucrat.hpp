@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 14:06:40 by danalmei          #+#    #+#             */
-/*   Updated: 2024/09/18 14:06:40 by danalmei         ###   ########.fr       */
+/*   Created: 2024/09/18 14:06:03 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:06:03 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ class Bureaucrat
 
 		const std::string getName(void) const;
 		int getGrade(void) const;
+		void	incrementGrade(void);
+		void	decrementGrade(void);
+		void	incrementGrade(int val);
+		void	decrementGrade(int val);
+		void	signForm(Form& form);
 
 		class GradeTooHighException : public std::exception
 		{
@@ -49,7 +54,6 @@ class Bureaucrat
 					return "Bureaucrat grade was too low";
 				}
 		};
-
-		void signForm(Form& form);
-		friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);

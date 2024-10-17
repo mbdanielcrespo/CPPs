@@ -5,27 +5,28 @@
 
 int main()
 {
-    try
-    {
-        Bureaucrat bob("Bob", 2);
-        ShrubberyCreationForm shrubbery("Home");
-        RobotomyRequestForm robotomy("Alice");
-        PresidentialPardonForm pardon("Charlie");
+	try {
+		Bureaucrat npc1("npc1", 140);
 
-        shrubbery.beSigned(bob);
-        robotomy.beSigned(bob);
-        pardon.beSigned(bob);
+		ShrubberyCreationForm shrubbery("home");
+		std::cout << shrubbery << std::endl;
+		RobotomyRequestForm robotomy("victim");
+		std::cout << robotomy << std::endl;
+		PresidentialPardonForm pardon("criminal");
+		std::cout << pardon << std::endl;
 
-    
-        bob.executeForm(shrubbery);
-        bob.executeForm(robotomy);
-        bob.executeForm(pardon);
-    }
-    catch (const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+		npc1.signForm(robotomy);
+		npc1.signForm(pardon);
+		npc1.signForm(shrubbery);
 
-    return 0;
+		npc1.executeForm(shrubbery);  // npc2 has the grade to execute shrubbery
+		npc1.executeForm(robotomy);   // npc1 executes robotomy
+		npc1.executeForm(pardon);     // npc1 executes pardon
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	return 0;
 }
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:06:34 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:06:34 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <AForm.hpp>
 
 AForm::AForm(void) : _name("Default AForm"),  _is_signed(false), _req_grade(100), _exec_grade(100)
@@ -22,17 +34,17 @@ AForm& AForm::operator=(const AForm& cp)
     return *this;
 }
 
-AForm::AForm(const std::string name, const int req_grade, const int exec_grade) : _name(name),  _is_signed(false), _req_grade(req_grade), _exec_grade(exec_grade)
+AForm::AForm(const std::string name, const int req_grade, const int exec_grade)
+ : 	_name(name),
+ 	_is_signed(false),
+	_req_grade(req_grade),
+	_exec_grade(exec_grade)
 {
 	std::cout << GREEN << "Parameter AForm constructor called!" << RESET << std::endl;
 	if (_req_grade < 1 || _exec_grade < 1)
-	{
 		throw AForm::GradeTooHighException();
-	}
-	else if (_req_grade > 150 || _exec_grade > 150)
-	{
+	if (_req_grade > 150 || _exec_grade > 150)
 		throw AForm::GradeTooLowException();
-	}
 }
 
 const std::string AForm::getName(void) const
@@ -40,7 +52,7 @@ const std::string AForm::getName(void) const
 	return _name;
 }
 
-bool AForm::isSigned(void) const
+bool AForm::getSigning(void) const
 {
 	return _is_signed;
 }
@@ -55,21 +67,27 @@ int AForm::getExecGrade(void) const
 	return _exec_grade;
 }
 
-bool AForm::beSigned(Bureaucrat& bur)
+void AForm::beSigned(const Bureaucrat& bur)
 {
-    if (bur.getGrade() > this->_req_grade)
-    {
-        std::cout << YELLOW << bur.getName() << " cannot sign " << this->getName() << " because the grade is too low." << RESET << std::endl;
-        throw GradeTooLowException();
-    }
-    this->_is_signed = true;
-    std::cout << YELLOW << bur.getName() << " signs " << this->getName() << RESET << std::endl;
-    return true;
+	if (bur.getGrade() < this->_req_grade)
+		throw AForm::GradeTooLowException();
+	this->_is_signed = true;
+	std::cout << CYAN << "Form " << this->_name << " has been successfully signed by " << bur.getName() << "!" << RESET << std::endl;
 }
+
+void AForm::execute(const Bureaucrat& bur) const
+{
+	if (!this->_is_signed)
+		throw AForm::FormNotSignedException();
+	if (bur.getGrade() < this->_exec_grade)
+		throw AForm::GradeTooLowException();
+	executeAction();
+}
+
 std::ostream& operator<<(std::ostream& os, const AForm& obj)
 {
-	os << YELLOW << "AForm: " << obj.getName() << " with signing grade of " << obj.getReqGrade();
-	if (obj.isSigned())
+	os << YELLOW << "Form: " << obj.getName() << " with signing grade of " << obj.getReqGrade();
+	if (obj.getSigning())
 		os << " has been signed" << RESET;
 	else 
 		os << " has not been signed" << RESET;

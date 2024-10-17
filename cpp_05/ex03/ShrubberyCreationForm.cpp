@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/17 21:55:19 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/17 21:55:19 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ShrubberyCreationForm.hpp>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("default_target")
@@ -29,23 +41,18 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout << RED << "Default ShrubberyCreationForm destructor called!" << RESET << std::endl;
 }
 
-void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
+void ShrubberyCreationForm::executeAction() const
 {
-	if (!isSigned())
-		throw AForm::GradeTooLowException();
-	if (executor.getGrade() > getExecGrade())
-		throw AForm::GradeTooLowException();
-
 	std::ofstream file((_target + "_shrubbery").c_str());
 	if (file.is_open())
 	{
-		file << "        ###\n";
-		file << "       #o###\n";
-		file << "     #####o###\n";
-		file << "    #o#\\#|#/###\n";
-		file << "     ###\\|/#o#\n";
-		file << "      # }|{  #\n";
-		file << "        }|{\n";
+		file << "        ooo\n";
+		file << "       ooooo\n";
+		file << "     oooooooooo";
+		file << "    oooooooooooo\n";
+		file << "    oooooooooooo\n";
+		file << "     	  oo\n";
+		file << "         oo\n";
 		file.close();
 		std::cout << YELLOW << "Shrubbery created at " << _target << "_shrubbery." << RESET << std::endl;
 	}

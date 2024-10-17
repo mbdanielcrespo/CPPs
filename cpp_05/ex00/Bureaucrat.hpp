@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include <main.h>
 
 class Bureaucrat
@@ -46,5 +47,11 @@ class Bureaucrat
 				}
 		};
 
-		friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
+		void	incrementGrade(void);
+		void	decrementGrade(void);
+		void	incrementGrade(int val);
+		void	decrementGrade(int val);
+
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);

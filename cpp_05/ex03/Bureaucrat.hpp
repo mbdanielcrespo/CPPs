@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/18 14:06:03 by danalmei          #+#    #+#             */
+/*   Updated: 2024/09/18 14:06:03 by danalmei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 #include <main.h>
 #include <AForm.hpp>
@@ -17,8 +29,14 @@ class Bureaucrat
 
 		Bureaucrat(std::string _name, int grade);
 
-		const std::string getName(void) const;
-		int getGrade(void) const;
+		const std::string 	getName(void) const;
+		int 				getGrade(void) const;
+		void	incrementGrade(void);
+		void	decrementGrade(void);
+		void	incrementGrade(int val);
+		void	decrementGrade(int val);
+		void	signForm(AForm& form);
+		void	executeForm(const AForm& form);
 
 		class GradeTooHighException : public std::exception
 		{
@@ -37,8 +55,6 @@ class Bureaucrat
 					return "Bureaucrat grade was too low";
 				}
 		};
-
-		void signAForm(AForm& AForm);
-		void executeForm(AForm const & form) const;
-		friend std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);
 };
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);

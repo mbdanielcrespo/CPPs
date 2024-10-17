@@ -23,41 +23,43 @@ Intern::~Intern()
 	std::cout << RED << "Default Intern destructor called!" << RESET << std::endl;
 }
 
+AForm* createShrubbery(const std::string& target)
+{
+	return new ShrubberyCreationForm(target);
+}
+
+AForm* createRobotomy(const std::string& target)
+{
+	return new RobotomyRequestForm(target);
+}
+
+AForm* createPresidential(const std::string& target)
+{
+	return new PresidentialPardonForm(target);
+}
+
 AForm* Intern::makeForm(const std::string& formName, const std::string& target)
 {
-    std::string formNames[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-    
-    AForm* (Intern::*formCreators[3])(const std::string& target) =
+	std::string formNames[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+	
+	AForm* (*formCreationFunctions[3])(const std::string&) =
 	{
-        &Intern::createShrubberyForm,
-        &Intern::createRobotomyForm,
-        &Intern::createPardonForm
-    };
+		&createShrubbery,
+		&createRobotomy,
+		&createPresidential
+	};
 
-    for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 3; ++i)
 	{
-        if (formName == formNames[i])
+		if (formNames[i] == formName)
 		{
-            std::cout << YELLOW << "Intern creates " << formName << " form." << RESET << std::endl;
-            return (this->*formCreators[i])(target);
-        }
-    }
+			std::cout << YELLOW << "Intern creates " << formName << RESET << std::endl;
+			return formCreationFunctions[i](target);
+		}
+	}
 
-    std::cerr << YELLOW << "Error: Form name '" << formName << "' not recognized." << RESET << std::endl;
-    return NULL;
+
+	std::cerr << RED << "Error: Form name '" << formName << "' not recognized." << RESET << std::endl;
+	return NULL;
 }
 
-AForm* Intern::createShrubberyForm(const std::string& target)
-{
-    return new ShrubberyCreationForm(target);
-}
-
-AForm* Intern::createRobotomyForm(const std::string& target)
-{
-    return new RobotomyRequestForm(target);
-}
-
-AForm* Intern::createPardonForm(const std::string& target)
-{
-    return new PresidentialPardonForm(target);
-}
