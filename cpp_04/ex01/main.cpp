@@ -38,14 +38,12 @@ int	main(void)
     {
         Dog tmpDog = basicDog;
     }
+
     std::cout << YELLOW << "Testing deep copy, basicDog should still be valid" << RESET << std::endl;
     basicDog.makeSound();
     std::cout << YELLOW << "Testing Dog deep copy with assignment operator" << RESET << std::endl;
     Dog anotherDog;
-    anotherDog = basicDog;
     anotherDog.makeSound();
-
-	
 
 	return (0);
 }

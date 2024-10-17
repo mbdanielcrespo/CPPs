@@ -4,21 +4,22 @@
 
 int	main(void)
 {
-	AAnimal* ani;
-	AAnimal* cat = new Cat;
-	AAnimal* dog = new Dog;
+	//AAnimal animal_error;
+	AAnimal* animals[4];
 
-	std::cout << YELLOW << "cat is type: " << cat->getType() << RESET << std::endl;
-	std::cout << YELLOW << "dog is type: " << dog->getType() << RESET << std::endl;
-	cat->makeSound();
-	dog->makeSound();
+    animals[0] = new Dog();
+    animals[1] = new Cat();
+    animals[2] = new Dog();
+    animals[3] = new Cat();
 
-	cat->setBrain(new Brain);
-	cat->getBrain()->shareIdea(-20);
-	cat->getBrain()->shareIdea(20);
+	for (int i = 0; i < 4; ++i)
+    {
+        std::cout << animals[i]->getType() << " says: ";
+        animals[i]->makeSound();
+    }
 
-	delete dog;
-	delete cat;
+	for (int i = 0; i < 4; ++i)
+		delete animals[i];
 
 	return (0);
 }

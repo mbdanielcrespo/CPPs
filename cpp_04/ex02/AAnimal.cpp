@@ -29,8 +29,3 @@ AAnimal::AAnimal(std::string type) : _type(type)
 {
 	std::cout << GREEN << "Animal parameter contructor called!" << RESET << std::endl;
 }
-
-const std::string&	AAnimal::getType() const
-{
-	return _type;
-}

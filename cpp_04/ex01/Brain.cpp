@@ -25,7 +25,7 @@ Brain::Brain(Brain& cp)
 
 Brain& Brain::operator=(const Brain& cp)
 {
-    std::cout << "Brain assignment operator called!" << std::endl;
+    std::cout << GREEN << "Brain assignment operator called!" << RESET << std::endl;
     if (this != &cp)
     {
         for (int i = 0; i < 100; ++i)

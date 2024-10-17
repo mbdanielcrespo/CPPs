@@ -6,15 +6,14 @@ Animal::Animal(void)
 	this->_type = "Animal";
 }
 
-Animal::Animal(Animal& cp)
+Animal::Animal(Animal& cp) : _type(cp._type)
 {
 	std::cout << GREEN << "Animal copy contructor called!" << RESET << std::endl;
-	this->_type = cp._type;
 }
 
 Animal& Animal::operator=(const Animal& cp)
 {
-    std::cout << "Animal assignment operator called!" << std::endl;
+    std::cout << YELLOW << "Animal assignment operator called!" << RESET << std::endl;
     if (this != &cp)
         this->_type = cp._type;
     return *this;

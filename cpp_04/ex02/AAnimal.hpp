@@ -6,7 +6,6 @@ class AAnimal
 {
 	protected:
 		std::string _type;
-		Brain*	_brain;
 	public:
 		AAnimal(void);
 		AAnimal(const AAnimal& cp);
@@ -17,6 +16,4 @@ class AAnimal
 
 		virtual const std::string&	getType(void) const = 0;
 		virtual void makeSound(void) const = 0;
-		virtual void setBrain(Brain*) {};
-		virtual Brain* getBrain() const { return 0; };
 };
