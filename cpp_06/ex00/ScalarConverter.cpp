@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/18 14:38:46 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/18 14:43:10 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ScalarConverter.hpp>
 
 ScalarConverter::ScalarConverter()
@@ -109,8 +121,10 @@ static bool handleChar(const std::string& literal)
 
 void ScalarConverter::convert(const std::string& literal)
 {
-	if (handleExceptions(literal)) return;
-	if (handleChar(literal)) return;
+	if (handleExceptions(literal))
+		return;
+	if (handleChar(literal))
+		return;
 	try
 	{
 		double value = std::strtod(literal.c_str(), NULL);

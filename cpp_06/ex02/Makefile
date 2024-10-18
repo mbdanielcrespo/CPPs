@@ -1,7 +1,7 @@
 NAME = IdentifyReal
 
-CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -I.
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
 
 RM = rm -rf
 
