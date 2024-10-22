@@ -69,7 +69,7 @@ int Form::getExecGrade(void) const
 
 void Form::beSigned(Bureaucrat& bur)
 {
-	if (bur.getGrade() < this->_req_grade)
+	if (bur.getGrade() > this->_req_grade)
 		throw Form::GradeTooLowException();
 	this->_is_signed = true;
 	std::cout << CYAN << "Form " << this->_name << " has been successfully signed by " << bur.getName() << "!" << RESET << std::endl;

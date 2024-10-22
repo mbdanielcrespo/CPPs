@@ -27,14 +27,18 @@ class Bureaucrat
 		Bureaucrat(std::string _name, int grade);
 
 		const std::string getName(void) const;
-		int getGrade(void) const;
+		int 	getGrade(void) const;
+		void	incrementGrade(void);
+		void	decrementGrade(void);
+		void	incrementGrade(int val);
+		void	decrementGrade(int val);
 
 		class GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char* what() const throw()
 				{
-					return "Bureaucrat grade is too high";
+					return "EXCEPTION: Bureaucrat grade is too high";
 				}
 		};
 
@@ -43,15 +47,9 @@ class Bureaucrat
 			public:
 				virtual const char* what() const throw()
 				{
-					return "Bureaucrat grade was too low";
+					return "EXCEPTION: Bureaucrat grade was too low";
 				}
 		};
-
-		void	incrementGrade(void);
-		void	decrementGrade(void);
-		void	incrementGrade(int val);
-		void	decrementGrade(int val);
-
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& obj);

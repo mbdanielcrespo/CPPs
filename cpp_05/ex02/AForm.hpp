@@ -45,7 +45,7 @@ class AForm
 			public:
 				virtual const char* what() const throw()
 				{
-					return "Form grade is too high";
+					return "EXCEPTION: Form grade is too high";
 				}
 		};
 
@@ -54,7 +54,7 @@ class AForm
 			public:
 				virtual const char* what() const throw()
 				{
-					return "Form grade was too low";
+					return "EXCEPTION: Form grade was too low";
 				}
 		};
 
@@ -63,7 +63,7 @@ class AForm
 			public:
 				virtual const char* what() const throw()
 				{
-					return "Form was't signed";
+					return "EXCEPTION: Form was't signed";
 				}
 		};
 };

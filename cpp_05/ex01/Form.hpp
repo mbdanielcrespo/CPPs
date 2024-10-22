@@ -42,7 +42,7 @@ class Form
 			public:
 				virtual const char* what() const throw()
 				{
-					return "Form grade is too high";
+					return "EXCEPTION: Form grade is too high";
 				}
 		};
 
@@ -51,7 +51,7 @@ class Form
 			public:
 				virtual const char* what() const throw()
 				{
-					return "Form grade was too low";
+					return "EXCEPTION: Form grade was too low";
 				}
 		};
 };

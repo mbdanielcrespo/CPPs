@@ -69,7 +69,7 @@ int AForm::getExecGrade(void) const
 
 void AForm::beSigned(const Bureaucrat& bur)
 {
-	if (bur.getGrade() < this->_req_grade)
+	if (bur.getGrade() > this->_req_grade)
 		throw AForm::GradeTooLowException();
 	this->_is_signed = true;
 	std::cout << CYAN << "Form " << this->_name << " has been successfully signed by " << bur.getName() << "!" << RESET << std::endl;
@@ -79,7 +79,7 @@ void AForm::execute(const Bureaucrat& bur) const
 {
 	if (!this->_is_signed)
 		throw AForm::FormNotSignedException();
-	if (bur.getGrade() < this->_exec_grade)
+	if (bur.getGrade() > this->_exec_grade)
 		throw AForm::GradeTooLowException();
 	executeAction();
 }

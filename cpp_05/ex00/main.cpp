@@ -18,8 +18,20 @@ int main()
 	{
         Bureaucrat a("Juan", 120);
 		std::cout << YELLOW << a << RESET << std::endl;
+
+		std::cout << YELLOW << "Beurocrat " << a.getName() << " with grade: " << a.getGrade() << std::endl;
+		a.incrementGrade();
+		std::cout << YELLOW << "Beurocrat " << a.getName() << " with increased grade: " << a.getGrade() << std::endl;
+		a.decrementGrade();
+		std::cout << YELLOW << "Beurocrat " << a.getName() << " with decreased grade: " << a.getGrade() << std::endl;
+		a.incrementGrade(10);
+		std::cout << YELLOW << "Beurocrat " << a.getName() << " with increased grade: " << a.getGrade() << std::endl;
+		a.decrementGrade(10);
+		std::cout << YELLOW << "Beurocrat " << a.getName() << " with decreased grade: " << a.getGrade() << std::endl;
+
 		Bureaucrat b("Paco", 200);
 		std::cout << YELLOW << a << RESET << std::endl;
+
     } 
 	catch (const Bureaucrat::GradeTooHighException& e)
 	{
@@ -33,6 +45,5 @@ int main()
 	{
         std::cerr << RED << "An unexpected error occurred: " << RESET << e.what() << std::endl;
     }
-    
     return 0;
 }

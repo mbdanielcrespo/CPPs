@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 15:37:02 by danalmei          #+#    #+#             */
-/*   Updated: 2024/10/22 16:06:18 by danalmei         ###   ########.fr       */
+/*   Created: 2024/09/18 14:05:44 by danalmei          #+#    #+#             */
+/*   Updated: 2024/10/18 15:49:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@
 # define B_CYAN   	"\033[1m\033[36m" 
 # define B_WHITE  	"\033[1m\033[37m" 
 //#define PRINT_COLOR(color, text) (std::cout << color << text << RESET)
-
 
 #endif // MAIN_H

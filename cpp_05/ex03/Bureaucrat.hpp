@@ -43,7 +43,7 @@ class Bureaucrat
 			public:
 				virtual const char* what() const throw()
 				{
-					return "Bureaucrat grade is too high";
+					return "EXCEPTION: Bureaucrat grade is too high";
 				}
 		};
 
@@ -52,7 +52,7 @@ class Bureaucrat
 			public:
 				virtual const char* what() const throw()
 				{
-					return "Bureaucrat grade was too low";
+					return "EXCEPTION: Bureaucrat grade was too low";
 				}
 		};
 };
