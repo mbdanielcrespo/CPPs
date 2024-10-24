@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:48:44 by danalmei          #+#    #+#             */
-/*   Updated: 2024/10/22 16:19:11 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:51:19 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,14 @@ typename T::iterator	easyfind(T& container, int num)
 		return it;
 	else
 		throw ValeNotFoundException();
+}
+
+template<typename T>
+void	printElements(T& container)
+{
+	typename T::iterator it;
+	
+	for (it = container.begin(); it != container.end(); it++)
+		std::cout << CYAN << *it << " " << RESET;
+	std::cout << std::endl;
 }

@@ -19,7 +19,7 @@ Character::Character()
 {
 	std::cout << GREEN << "Character default constructor called" << RESET << std::endl;
 	for (int i = 0; i < 4; ++i)
-        _materias[i] = NULL;  // Use NULL instead of NUL
+		_materias[i] = NULL;  // Use NULL instead of NUL
 }
 
 Character::Character(const Character& cp)
@@ -33,31 +33,31 @@ Character&	Character::operator=(const Character cp)
 	std::cout << GREEN << "Character assignment operator called" << RESET << std::endl;
 	if (this != &cp)
 	{
-        _name = cp._name;
-        for (int i = 0; i < 4; i++)
+		_name = cp._name;
+		for (int i = 0; i < 4; i++)
 		{
-            delete _materias[i];
-            if (cp._materias[i])
-                _materias[i] = cp._materias[i]->clone();
-            else
-                _materias[i] = NULL;
-        }
-    }
-    return *this;
+			delete _materias[i];
+			if (cp._materias[i])
+				_materias[i] = cp._materias[i]->clone();
+			else
+				_materias[i] = NULL;
+		}
+	}
+	return *this;
 }
 
 Character::~Character()
 {
 	std::cout << RED << "Character default destructor called" << RESET << std::endl;
 	for (int i = 0; i < 4; i++)
-        delete _materias[i];
+		delete _materias[i];
 }
 
 Character::Character(const std::string& name) : _name(name)
 {
 	std::cout << GREEN << "Character attribute constructor called" << RESET << std::endl;
 	for (int i = 0; i < 4; i++)
-        _materias[i] = NULL;
+		_materias[i] = NULL;
 }
 
 const std::string& Character::getName() const
@@ -69,13 +69,13 @@ void Character::equip(AMateria* m)
 {
 	for (int i = 0; i < 4; ++i)
 	{
-        if (_materias[i] == NULL)
+		if (_materias[i] == NULL)
 		{
-            _materias[i] = m;
+			_materias[i] = m;
 			std::cout << YELLOW << "Materia " << m->getType() << " equiped successfully!" << RESET << std::endl;
-            return;
-        }
-    }
+			return;
+		}
+	}
 }
 
 void Character::unequip(int idx)

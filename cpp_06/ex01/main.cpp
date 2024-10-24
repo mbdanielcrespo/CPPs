@@ -10,7 +10,7 @@ int main()
 
 	std::cout << YELLOW << "Original Data: " << myData.value << ", " << myData.name << RESET << std::endl;
 	uintptr_t raw = Serializer::serialize(&myData);
-	std::cout << YELLOW "Serialized raw value (uintptr_t): " << raw << RESET << std::endl;
+	std::cout << YELLOW "Serialized raw value: " << raw << RESET << std::endl;
 	Data* deserializedData = Serializer::deserialize(raw);
 	std::cout << YELLOW << "Deserialized Data: " << deserializedData->value << ", " << deserializedData->name << RESET << std::endl;
 

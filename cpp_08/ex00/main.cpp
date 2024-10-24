@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:05:30 by danalmei          #+#    #+#             */
-/*   Updated: 2024/10/22 16:17:59 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/10/23 12:53:03 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ int main()
 		
 		std::vector<int>::iterator it;
 
-		std::cout << YELLOW << "Testing with vector:" << RESET << std::endl;
+		std::cout << YELLOW << "Testing with vector [30]:" << RESET << std::endl;
+		printElements(vec);
 		it = easyfind(vec, 30);
 		std::cout << GREEN << "Found: " << *it << RESET << std::endl;
 
-		std::cout << YELLOW << "Testing with vector (value not found):" << RESET << std::endl;
+		std::cout << YELLOW << "Testing with vector [100]:" << RESET << std::endl;
 		it = easyfind(vec, 100);
 	}
 	catch (const std::exception& e)
@@ -53,7 +54,8 @@ int main()
 		
 		std::list<int>::iterator it;
 		
-		std::cout << YELLOW << "Testing with list:" << RESET << std::endl;
+		std::cout << YELLOW << "Testing with list [15]:" << RESET << std::endl;
+		printElements(lst);
 		it = easyfind(lst, 15);
 		std::cout << GREEN << "Found: " << *it << RESET << std::endl;
 	}
@@ -73,7 +75,8 @@ int main()
 		
 		std::deque<int>::iterator it;
 
-		std::cout << YELLOW << "Testing with deque:" << RESET << std::endl;
+		std::cout << YELLOW << "Testing with deque [400]:" << RESET << std::endl;
+		printElements(deq);
 		it = easyfind(deq, 400);
 		std::cout << GREEN << "Found: " << *it << RESET << std::endl;
 	}

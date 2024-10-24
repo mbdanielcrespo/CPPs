@@ -19,11 +19,11 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string name)
 {
-    this->_name = name;
-    this->_health = 10;
-    this->_energy = 10;
-    this->_attack = 0;
-    std::cout << YELLOW << "ClapTrap " << _name << " was built!" << RESET << std::endl;
+	this->_name = name;
+	this->_health = 10;
+	this->_energy = 10;
+	this->_attack = 0;
+	std::cout << YELLOW << "ClapTrap " << _name << " was built!" << RESET << std::endl;
 	ClapTrap::printStats();
 }
 
@@ -45,7 +45,7 @@ ClapTrap::~ClapTrap()
 
 ClapTrap::ClapTrap(const ClapTrap &cp) : _name(cp._name), _health(cp._health), _energy(cp._energy), _attack(cp._attack)
 {
-    std::cout << GREEN << "ClapTrap " << _name << " copy constructor called" << RESET << std::endl;
+	std::cout << GREEN << "ClapTrap " << _name << " copy constructor called" << RESET << std::endl;
 }
 
 ClapTrap& 	ClapTrap::operator=(const ClapTrap &cp)
@@ -126,20 +126,20 @@ const int	&ClapTrap::getAttack() const
 
 void ClapTrap::setName(const std::string &name)
 {
-    this->_name = name;
+	this->_name = name;
 }
 
 void ClapTrap::setHealth(int health)
 {
-    this->_health = health;
+	this->_health = health;
 }
 
 void ClapTrap::setEnergy(int energy)
 {
-    this->_energy = energy;
+	this->_energy = energy;
 }
 
 void ClapTrap::setAttack(int attack)
 {
-    this->_attack = attack;
+	this->_attack = attack;
 }*/

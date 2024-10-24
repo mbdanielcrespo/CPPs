@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:38:46 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/18 14:43:10 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/24 15:31:14 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,10 +135,10 @@ void ScalarConverter::convert(const std::string& literal)
 	}
 	catch (std::invalid_argument&)
 	{
-		std::cout << "Error: Invalid literal" << std::endl;
+		std::cout << RED << "Error: Invalid literal" << RESET << std::endl;
 	}
 	catch (std::out_of_range&)
 	{
-		std::cout << "Error: Literal out of range" << std::endl;
+		std::cout << RED << "Error: Literal out of range" << RESET << std::endl;
 	}
 }
