@@ -49,7 +49,9 @@
 		"streambuf": "cpp",
 		"cinttypes": "cpp",
 		"typeinfo": "cpp",
-		"optional": "cpp"
+		"optional": "cpp",
+		"*.tpp": "cpp",
+		"stack": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }
