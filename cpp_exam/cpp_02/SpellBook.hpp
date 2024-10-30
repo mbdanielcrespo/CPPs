@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   SpellBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 19:42:43 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/18 19:42:43 by marvin           ###   ########.fr       */
+/*   Created: 2024/10/29 22:46:15 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/29 22:46:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include <iostream>
+#include <map>
 
-template <typename T>
-class Array
+class SpellBook
 {
 	private:
-		T* _eles;
-		unsigned int _size;
+		SpellBook(const SpellBook& cp);
+		SpellBook&operator=(const SpellBook& cp);
+		std::map <std::string, ASpell*> _SpellBook;
 	public:
-		Array();
-		Array(unsigned int n);
-		Array(const Array& cp);
-		Array&operator=(const Array& cp);
-		~Array();
-
-		T& operator[](unsigned int index);
-		const T& operator[](unsigned int index) const;
-		unsigned int size() const;
+		SpellBook();
+		~SpellBook();
+		void	learnSpell(ASpell*);
+		void	forgetSpell(const std::string&);
+		ASpell*	createSpell(const std::string&);
 };
-

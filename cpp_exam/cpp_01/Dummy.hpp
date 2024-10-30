@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   Dummy.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 19:42:43 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/18 19:42:43 by marvin           ###   ########.fr       */
+/*   Created: 2024/10/29 12:49:37 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/29 12:49:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include <ATarget.hpp>
 
-template <typename T>
-class Array
+class Dummy : public ATarget
 {
-	private:
-		T* _eles;
-		unsigned int _size;
-	public:
-		Array();
-		Array(unsigned int n);
-		Array(const Array& cp);
-		Array&operator=(const Array& cp);
-		~Array();
+public:
+	Dummy();
+	~Dummy();
 
-		T& operator[](unsigned int index);
-		const T& operator[](unsigned int index) const;
-		unsigned int size() const;
+	ATarget* clone(void) const;
 };
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Warlock.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 16:20:18 by danalmei          #+#    #+#             */
-/*   Updated: 2024/10/24 16:33:12 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:29:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,40 +17,50 @@
 		
 Warlock::Warlock() {}
 
-Warlock::Warlock(const Warlock &cp) {}
+Warlock::Warlock(const Warlock &cp)
+{
+	*this = cp;
+}
 
-Warlock&Warlock::operator=(const Warlock &cp)
+Warlock& Warlock::operator=(const Warlock &cp)
 {
 	std::cout << "Warlock assignment op called!" << std::endl;
 	if (this != &cp)
 	{
-		this._name = cp._name;
-		this._type = cp._type;
+		this->_name = cp._name;
+		this->_title = cp._title;
 	}
 	return (*this);
 }
 
 Warlock::~Warlock()
 {
-	std::cout << "Warlock def destructor called!" << std::endl;
+	std::cout << _name << ": My job here is done!" << std::endl;
 }
 
-Warlock::Warlock(const std::string name, const std::string type)
+Warlock::Warlock(const std::string name, const std::string title)
 {
-	std::cout << this->_name << ": This looks like another boring day." << std::endl;
+	_name = name;
+	_title = title;
+	std::cout << _name << ": This looks like another boring day." << std::endl;
 }
 
-const std::string&	Warlock::getName(void)
+const std::string&	Warlock::getName(void) const
 {
-	return this->_name;
+	return _name;
 }
 
-const std::string&	Warlock::getTitle(void)
+const std::string&	Warlock::getTitle(void) const
 {
-	return this->_title;
+	return _title;
 }
 
-void				Warlock::setTitle(const std::string title)
+void				Warlock::setTitle(const std::string& title)
 {
-	this->_title = title;
+	_title = title;
+}
+
+void	Warlock::introduce() const
+{
+	std::cout << _name << ": I am " << _name << ", " << _title << "!" << std::endl;
 }

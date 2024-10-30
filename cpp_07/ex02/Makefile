@@ -7,7 +7,7 @@ RM = rm -rf
 
 OBJDIR = obj
 
-SRC = main.cpp
+SRC = main.cpp Array.cpp
 INC = 
 OBJ	= $(SRC:%.cpp=$(OBJDIR)/%.o)
 

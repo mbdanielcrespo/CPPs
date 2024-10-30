@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   ATarget.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 19:42:43 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/18 19:42:43 by marvin           ###   ########.fr       */
+/*   Created: 2024/10/29 12:40:35 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/29 12:40:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include <iostream>
+#include <ASpell.hpp>
 
-template <typename T>
-class Array
+class ASpell;
+
+class ATarget
 {
-	private:
-		T* _eles;
-		unsigned int _size;
-	public:
-		Array();
-		Array(unsigned int n);
-		Array(const Array& cp);
-		Array&operator=(const Array& cp);
-		~Array();
+protected:
+	std::string _type;
+public:
+	ATarget(std::string type);
 
-		T& operator[](unsigned int index);
-		const T& operator[](unsigned int index) const;
-		unsigned int size() const;
+	ATarget();
+	ATarget(const ATarget &cp);
+	ATarget&operator=(const ATarget &cp);
+	virtual ~ATarget();
+
+	std::string getType(void) const;
+
+	void	getHitBySpell(const ASpell& spell) const;
+
+	virtual ATarget* clone(void) const = 0;
 };
-

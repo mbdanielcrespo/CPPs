@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   TargetGenerator.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 19:42:43 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/18 19:42:43 by marvin           ###   ########.fr       */
+/*   Created: 2024/10/30 00:14:26 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/30 00:14:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+#include <ATarget.hpp>
+#include <map>
 
-template <typename T>
-class Array
+class TargetGenerator
 {
 	private:
-		T* _eles;
-		unsigned int _size;
+		std::map<std::string, ATarget*> _targets;
+		TargetGenerator(const TargetGenerator& cp);
+		TargetGenerator&operator=(const TargetGenerator& cp);
 	public:
-		Array();
-		Array(unsigned int n);
-		Array(const Array& cp);
-		Array&operator=(const Array& cp);
-		~Array();
+		TargetGenerator();
+		~TargetGenerator();
 
-		T& operator[](unsigned int index);
-		const T& operator[](unsigned int index) const;
-		unsigned int size() const;
+		void learnTargetType(ATarget*);
+		void forgetTargetType(string const &);
+		ATarget* createTarget(string const &);
 };
-

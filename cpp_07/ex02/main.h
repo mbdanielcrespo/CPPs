@@ -6,12 +6,14 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:05:44 by danalmei          #+#    #+#             */
-/*   Updated: 2024/10/18 15:49:50 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/21 12:42:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAIN_H
 # define MAIN_H
+
+#include <iostream>
 
 # define RESET     	"\033[0m"
 # define RED       	"\033[31m"      
