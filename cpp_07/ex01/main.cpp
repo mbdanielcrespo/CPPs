@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:05:30 by danalmei          #+#    #+#             */
-/*   Updated: 2024/10/18 15:46:48 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/04 10:32:26 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iter.hpp>
+#include <Iter.hpp>
 #include <main.h>
 
 int main()
@@ -28,7 +28,7 @@ int main()
 	iter(arr, len, printEle<int>);
 	std::cout << std::endl;
 
-	std::string strArr[] = {"apple", "banana", "cherry"};
+	std::string strArr[] = {"a", "b", "c", "d", "e", "f", "g"};
     int strLength = sizeof(strArr) / sizeof(strArr[0]);
 
     std::cout << "String array: ";

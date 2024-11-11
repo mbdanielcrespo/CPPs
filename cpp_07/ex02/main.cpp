@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:05:30 by danalmei          #+#    #+#             */
-/*   Updated: 2024/10/21 12:42:38 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/04 12:31:16 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int main()
 {
 	Array<int> intArray(5);
 	for (unsigned int i = 0; i < intArray.size(); i++)
-		intArray = i + 1;
+		intArray[i] = i + 1;
 
 	std::cout << YELLOW << "IntArray: " << RESET << std::endl;
 	for (unsigned int i = 0; i < intArray.size(); i++)
 		std::cout << YELLOW << intArray[i] << ", " << RESET << std::endl;
 
-	Array<std::string> strArray(3);
+	Array<std::string> strArray(5);
 	strArray[0] = "You";
 	strArray[1] = "are";
 	strArray[2] = "my";

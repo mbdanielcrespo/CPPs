@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #pragma once
+#include <iostream>
+#include <stdexcept>
 
 template <typename T>
 class Array
@@ -30,3 +32,4 @@ class Array
 		unsigned int size() const;
 };
 
+#include <Array.tpp>

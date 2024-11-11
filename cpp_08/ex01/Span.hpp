@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:20:39 by danalmei          #+#    #+#             */
-/*   Updated: 2024/10/22 17:11:25 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:31:13 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class Span
 {
 	private:
-		const unsigned int _N;
+		unsigned int _N;
 		std::vector<int> _numbers;
 	public:
 		Span();

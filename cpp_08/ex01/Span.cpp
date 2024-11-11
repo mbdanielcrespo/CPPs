@@ -20,7 +20,7 @@ Span& Span::operator=(const Span& cp)
 	std::cout << GREEN << "Span Assignment operator called!" << RESET << std::endl;
 	if (this != &cp)
 	{
-		const_cast<unsigned int&>(_N) = cp._N;
+		_N = cp._N;
 		_numbers = cp._numbers;
 	}
 	return *this;
@@ -30,7 +30,6 @@ Span::~Span()
 {
 	std::cout << RED << "Span Default destructor called!" << RESET << std::endl;
 }
-
 
 void			Span::addNumber(unsigned int num)
 {

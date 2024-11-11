@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 15:48:44 by danalmei          #+#    #+#             */
-/*   Updated: 2024/10/23 12:51:19 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:05:19 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,20 @@ typename T::iterator	easyfind(T& container, int num)
 }
 
 template<typename T>
+void printElement(const T& element)
+{
+	std::cout << CYAN << element << " " << RESET;
+}
+
+template<typename T>
+void	printElements(const T& container)
+{	
+	std::for_each(container.begin(), container.end(), printElement<typename T::value_type>);
+	std::cout << std::endl;
+}
+
+/*
+template<typename T>
 void	printElements(T& container)
 {
 	typename T::iterator it;
@@ -46,3 +60,4 @@ void	printElements(T& container)
 		std::cout << CYAN << *it << " " << RESET;
 	std::cout << std::endl;
 }
+*/
