@@ -1,4 +1,4 @@
-NAME = btc
+NAME = btc_exch
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
@@ -7,7 +7,7 @@ RM = rm -rf
 
 OBJDIR = obj
 
-SRC = main.cpp
+SRC = main.cpp BitcoinExchange.cpp
 INC = 
 OBJ	= $(SRC:%.cpp=$(OBJDIR)/%.o)
 
