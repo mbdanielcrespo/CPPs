@@ -12,14 +12,15 @@
 
 #pragma once
 #include <main.h>
+#include <iostream>
 #include <stack>
-#include <cctype>
+
 
 class RPN
 {
 	private:
-		std::stack<int>		values;
-		std::stack<char>	operators;
+		std::stack<int>		_values;
+		std::stack<std::string>	_operators;
 		
 	public:
 		RPN();
@@ -27,7 +28,7 @@ class RPN
 		RPN&operator=(const RPN& cp);
 		~RPN();
 
-		parseInput();
-		performRPN();
+		void	parseInput(const std::string& input);
+		//performRPN();
 };
 

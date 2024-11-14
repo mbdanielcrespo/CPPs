@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string>
+#include <cctype>
+#include <cstdlib>
 #include <RPN.hpp>
-
-		//std::stack<int>		_values;
-		//std::stack<char>	_operators;
 		
 RPN::RPN()
 {
@@ -59,18 +59,102 @@ static bool isValidOperator(const std::string& token)
 		return (FALSE);
 	for (size_t i = 0; i <= 3; i++)
 	{
-		if (token == OPERATORS_VALS[i])
+		if (token == "*" || token == "/" || token == "+" || token == "-")
 			return (TRUE);
 	}
 	return (FALSE);
 	
 }
 
-RPN::parseInput(const std::string)
+void	RPN::parseInput(const std::string& input)
 {
+	std::string	token;
 
+	for(size_t i = 0; i < input.length(); i++)
+	{
+		if (input[i] == ' ')
+		{
+			if (!token.empty())
+			{
+				if (isValidNumber(token))
+				{
+					_values.push(atoi(token.c_str()));
+					std::cout << "Number pushed: " << token << std::endl;
+				}
+				else if (isValidOperator(token))
+				{
+					_operators.push(token.c_str());
+					std::cout << "Operator pushed: " << token << std::endl;
+				}
+				else
+					std::cout << RED << "Invalid token!" << RESET << token << std::endl;
+			}
+			token.clear();
+		}
+		else
+			token += input[i];
+	}
+
+	if (!token.empty())
+	{
+        if (isValidNumber(token))
+		{
+            _values.push(atoi(token.c_str()));
+			if (DEBUG == DEBUG_ON)
+            	std::cout << YELLOW << "Number pushed: " << token << RESET << std::endl;
+        }
+        else if (isValidOperator(token))
+		{
+            _operators.push(token.c_str());
+			if (DEBUG == DEBUG_ON)
+	            std::cout << YELLOW << "Operator pushed: " << token << RESET << std::endl;
+        }
+        else
+            std::cout << "Invalid token: " << token << std::endl;
+    }
+
+    std::cout << "\nFinal Numbers Stack (top to bottom): ";
+    std::stack<int> tempNum = _values;
+    while (!tempNum.empty())
+	{
+        std::cout << tempNum.top() << " ";
+        tempNum.pop();
+    }
+    
+    std::cout << "\nFinal Operators Stack (top to bottom): ";
+    std::stack<std::string> tempOp = _operators;
+    while (!tempOp.empty())
+	{
+        std::cout << tempOp.top() << " ";
+        tempOp.pop();
+    }
+    std::cout << std::endl;
 }
 
+static int	operate(int num1, int num2, std::string operand)
+{
+	if (operand == "+")
+		return (num1 + num2);
+	else if (operand == "-")
+		return (num1 + num2);
+	else if (operand == "*")
+		return (num1 + num2);
+	else if (operand == "/")
+		return (num1 + num2);
+	else
+		PRINT_COLOR(RED, "Something very wired happend!");
+}
 
+RPN::performRPN()
+{
+	int	last = 0;
+	int	res = 0;
 
-RPN::performRPN();
+	last = _values.top();
+	_values.pop();
+
+	while (!_values.empty())
+	{
+		res = operate(last, res, _operators.top())
+	}
+}
