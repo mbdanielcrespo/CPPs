@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:05:44 by danalmei          #+#    #+#             */
-/*   Updated: 2024/11/13 15:29:41 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/13 19:37:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
 # define B_MAGENTA	"\033[1m\033[35m"
 # define B_CYAN   	"\033[1m\033[36m" 
 # define B_WHITE  	"\033[1m\033[37m" 
-//#define PRINT_COLOR(color, text) (std::cout << color << text << RESET)
+
+# define PRINT_COLOR(color, text) (std::cout << color << text << RESET << std::endl)
 
 # define DEBUG		0
 # define DEBUG_ON	1
