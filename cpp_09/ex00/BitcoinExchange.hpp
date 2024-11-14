@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:58:12 by danalmei          #+#    #+#             */
-/*   Updated: 2024/11/13 21:06:19 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/14 10:48:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ struct BitcoinData
 	std::string date;
 	float value;
 };
-
+// ERRORS TO STDERROR
 class BitcoinExchange
 {
 	private:
