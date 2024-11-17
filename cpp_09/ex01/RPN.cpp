@@ -14,6 +14,8 @@
 #include <cctype>
 #include <cstdlib>
 #include <RPN.hpp>
+#include <sstream>
+
 		
 RPN::RPN()
 {
@@ -66,95 +68,82 @@ static bool isValidOperator(const std::string& token)
 	
 }
 
-void	RPN::parseInput(const std::string& input)
-{
-	std::string	token;
-
-	for(size_t i = 0; i < input.length(); i++)
-	{
-		if (input[i] == ' ')
-		{
-			if (!token.empty())
-			{
-				if (isValidNumber(token))
-				{
-					_values.push(atoi(token.c_str()));
-					std::cout << "Number pushed: " << token << std::endl;
-				}
-				else if (isValidOperator(token))
-				{
-					_operators.push(token.c_str());
-					std::cout << "Operator pushed: " << token << std::endl;
-				}
-				else
-					std::cout << RED << "Invalid token!" << RESET << token << std::endl;
-			}
-			token.clear();
-		}
-		else
-			token += input[i];
-	}
-
-	if (!token.empty())
-	{
-        if (isValidNumber(token))
-		{
-            _values.push(atoi(token.c_str()));
-			if (DEBUG == DEBUG_ON)
-            	std::cout << YELLOW << "Number pushed: " << token << RESET << std::endl;
-        }
-        else if (isValidOperator(token))
-		{
-            _operators.push(token.c_str());
-			if (DEBUG == DEBUG_ON)
-	            std::cout << YELLOW << "Operator pushed: " << token << RESET << std::endl;
-        }
-        else
-            std::cout << "Invalid token: " << token << std::endl;
-    }
-
-    std::cout << "\nFinal Numbers Stack (top to bottom): ";
-    std::stack<int> tempNum = _values;
-    while (!tempNum.empty())
-	{
-        std::cout << tempNum.top() << " ";
-        tempNum.pop();
-    }
-    
-    std::cout << "\nFinal Operators Stack (top to bottom): ";
-    std::stack<std::string> tempOp = _operators;
-    while (!tempOp.empty())
-	{
-        std::cout << tempOp.top() << " ";
-        tempOp.pop();
-    }
-    std::cout << std::endl;
-}
-
 static int	operate(int num1, int num2, std::string operand)
 {
 	if (operand == "+")
 		return (num1 + num2);
 	else if (operand == "-")
-		return (num1 + num2);
+		return (num1 - num2);
 	else if (operand == "*")
-		return (num1 + num2);
+		return (num1 * num2);
 	else if (operand == "/")
-		return (num1 + num2);
-	else
-		PRINT_COLOR(RED, "Something very wired happend!");
+	{
+		if (num2 == 0)
+		{
+			PRINT_COLOR(RED, "Error: Division by zero!");
+			exit(EXIT_FAILURE);
+		}
+		return (num1 / num2);
+	}
+	PRINT_COLOR(RED, "Something very wired happend!");
+	return (0);
 }
 
-RPN::performRPN()
+bool	RPN::performRPN(const std::string &input)
 {
-	int	last = 0;
-	int	res = 0;
+	std::istringstream stream(input);
+	std::string token;
+	int finalResult;
 
-	last = _values.top();
-	_values.pop();
-
-	while (!_values.empty())
+	while (stream >> token)
 	{
-		res = operate(last, res, _operators.top())
+		if (DEBUG == DEBUG_ON)
+			PRINT_COLOR(GREEN, token);
+
+		if (isValidNumber(token))
+		{
+			int number = std::atoi(token.c_str());
+			_values.push(number);
+		}
+
+		else if (isValidOperator(token))
+		{
+			if (_values.size() < 2)
+			{
+				PRINT_COLOR(RED, ERR_MSG_2);
+				return (0);
+				continue ;
+			}
+
+			int num2 = _values.top();
+			_values.pop();
+			int num1 = _values.top();
+			_values.pop();
+			int result = operate(num1, num2, token);
+			_values.push(result);
+
+			if (DEBUG == DEBUG_ON)
+				std::cout << "Performed operation: " << num1 << " " << token << " " << num2 << " = " << result << std::endl;
+		}
+		else
+		{
+			PRINT_COLOR(RED, ERR_MSG_3);
+			return (0);
+		}
+
+		if (_values.size() == 1)
+			finalResult = _values.top();
+		//else
+		//	PRINT_COLOR(RED, ERR_MSG_1);
 	}
+
+	if (_values.size() != 1)
+	{
+		PRINT_COLOR(RED, ERR_MSG_1);
+		return (0);
+	}
+
+	finalResult = _values.top();
+	PRINT_COLOR(GREEN, finalResult);
+	return (1);
 }

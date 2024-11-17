@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:07:19 by danalmei          #+#    #+#             */
-/*   Updated: 2024/11/14 10:31:52 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/15 18:02:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ float	BitcoinExchange::find_closest_date(const std::string& inputDate) const
 {
 	std::vector<BitcoinData>::const_iterator priceIt = this->_bitcoinPrices.begin();
 	std::vector<BitcoinData>::const_iterator closestIt = this->_bitcoinPrices.end();
+	
 	for (; priceIt != _bitcoinPrices.end(); priceIt++)
 	{
 		if (priceIt->date > inputDate)
@@ -197,7 +198,6 @@ void BitcoinExchange::processExchange() const
 			continue ;
 		}
 
-		
 		float value = find_closest_date(it->date);
 		float res = it->value * value;
 		std::cout << CYAN << it->date << " => " << it->value << " = " << res << RESET << std::endl;

@@ -28,7 +28,7 @@ class RPN
 		RPN&operator=(const RPN& cp);
 		~RPN();
 
-		void	parseInput(const std::string& input);
-		//performRPN();
+		//void	parseInput(const std::string& input);
+		bool	performRPN(const std::string &input);
 };
 

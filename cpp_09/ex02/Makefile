@@ -1,4 +1,4 @@
-NAME = RPN
+NAME = PmergeMe
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I.
@@ -36,9 +36,4 @@ fclean: clean
 re: fclean all
 
 test:
-	./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +"
-	./$(NAME) "7 7 * 7 -"
-	./$(NAME) "1 2 * 2 / 2 * 2 4 - +"
-	./$(NAME) "1 + 1 + 1 + +"
-	./$(NAME) "1 + 1 + 1 1 1"
-	./$(NAME) "(1 + 1)"
+	./$(NAME)
