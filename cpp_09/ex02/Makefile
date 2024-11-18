@@ -7,7 +7,7 @@ RM = rm -rf
 
 OBJDIR = obj
 
-SRC = main.cpp RPN.cpp
+SRC = main.cpp PmergeMe.cpp
 INC = 
 OBJ	= $(SRC:%.cpp=$(OBJDIR)/%.o)
 

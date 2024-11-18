@@ -15,33 +15,31 @@
 
 #include <list>
 #include <deque>
-
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
 #include <string>
-
 #include <algorithm>
 #include <stdexcept>
+#include <climits>
 
 typedef	std::list<int>		List;
 typedef	std::deque<int>		Deque;
 typedef std::pair<int, int> IntPair;
-typedef std::deque<IntPair>	PairDeque;
 typedef std::list<IntPair>	PairList;
+typedef std::deque<IntPair>	PairDeque;
 
 class PmergeMe
 {
 	private:
-		List _numbers_list;
-		Deque _numbers_deque;
+		List _numbersList;
+		Deque _numbersDeque;
 
-		PairDeque makePairs(Deque& deq);
-		void insertSort(Deque& chain, Deque& pending);
-		void mergePairs(PairDeque& pairs);
-	
 		void validateNumber(const std::string& str) const;
 		void checkDuplicates() const;
+		
+		void mergeInsertSort(List& sequence);
+		void mergeInsertSort(Deque& sequence);
 
 	public:
 		PmergeMe();
@@ -50,8 +48,10 @@ class PmergeMe
 		~PmergeMe();
 
 		void	store_values(char **argv);
-		void	ford_jhonson();
-		
-		const List& getList() const { return _numbers_list; }
-		const Deque& getDeque() const { return _numbers_deque; }
+		//void	ford_jhonson();
+
+		void sortList();
+		void sortDeque();
+		const List& getList() const;
+		const Deque& getDeque() const;
 };
