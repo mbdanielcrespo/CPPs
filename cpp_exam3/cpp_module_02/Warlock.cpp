@@ -23,13 +23,11 @@ Warlock&	Warlock::operator=(const Warlock &cp)
 Warlock::~Warlock()
 {
 	std::cout << this->getName() << ": My job here is done!" << std::endl;
-	delete _SpellBook;
 }
 
 Warlock::Warlock(const std::string& name, const std::string& title) : _name(name), _title(title)
 {
 	std::cout << this->getName() << ": This looks like another boring day." << std::endl;
-	_SpellBook = new SpellBook();
 }
 
 const std::string Warlock::getName(void) const { return _name; }
@@ -55,8 +53,6 @@ void	Warlock::forgetSpell(std::string spellName)
 
 void	Warlock::launchSpell(std::string spellName, const ATarget& target) 
 {
-	if (_SpellBook.find(spellName) != _SpellBook.end())
-	{
-		_SpellBook[spellName]->launch(target);
-	}
+	if (_SpellBook.createSpell(spellName))
+		_SpellBook.createSpell(spellName)->launch(target);
 }

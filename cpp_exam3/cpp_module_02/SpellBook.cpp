@@ -2,9 +2,10 @@
 
 
 
-		std::map <std::string, *ASpell> _SpellBook;
+#include <SpellBook.hpp>
 
 SpellBook::SpellBook() {}
+
 SpellBook::SpellBook(const SpellBook& cp) : _SpellBook(cp._SpellBook) {}
 
 SpellBook& SpellBook::operator=(const SpellBook& cp)
@@ -14,7 +15,14 @@ SpellBook& SpellBook::operator=(const SpellBook& cp)
 	return (*this);
 }
 
-~SpellBook() {}
+SpellBook::~SpellBook()
+{
+	for (std::map <std::string, ASpell*>::iterator it = _SpellBook.begin(); it != _SpellBook.end(); it++)
+	{
+		delete it->second;
+	}
+	_SpellBook.clear();
+}
 
 void	SpellBook::learnSpell(ASpell* spell)
 {
@@ -36,6 +44,10 @@ void	SpellBook::forgetSpell(const std::string& spellName)
 
 ASpell* SpellBook::createSpell(const std::string& spellName)
 {
+	ASpell*	tmp = NULL;
+	if (_SpellBook.find(spellName) != _SpellBook.end())
+		tmp = _SpellBook[spellName];
+	return (tmp);
 
 }
 	
