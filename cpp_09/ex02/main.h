@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:05:44 by danalmei          #+#    #+#             */
-/*   Updated: 2024/11/18 12:32:16 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:49:24 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define B_WHITE  	"\033[1m\033[37m" 
 
 # define PRINT_COLOR(color, text) (std::cerr << color << text << RESET << std::endl)
+# define PRINT_ERROR(color, text) (std::cerr << color << text << RESET << std::endl)
 
 # define DEBUG		0
 # define DEBUG_ON	1
@@ -50,12 +51,14 @@
 
 # define ERR_MSG_NUMBER_OF_ARGS	"ERROR: Invalid number of arguments"	
 # define ERR_MSG_OPEN_FILE		"ERROR: Could not open file!"
+# define ERR_MSG_UNEXPECTED		"Error: An unexpected error has ocurred!"
 
 # define ERR_MSG_DATE			"Error: bad input => "
 # define ERR_MSG_NEGATIVE_VALUE	"Error: not a positive number."
 # define ERR_MSG_TOO_BIG_NUMBER	"Error: too large a number."
 # define ERR_MSG_INVALID_VALUE	"Error: invalid value."
 # define ERR_MSG_NO_DATE		"Error: no bitcoin price data available for this date."
+# define ERR_MSG_DIV_BY_0		"Error: Division by zero!"
 
 # define ERR_MSG_1              "Error: Invalid RPN expression"
 # define ERR_MSG_2				"Error: Invalid input"

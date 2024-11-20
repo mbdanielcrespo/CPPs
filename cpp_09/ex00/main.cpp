@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:58:09 by danalmei          #+#    #+#             */
-/*   Updated: 2024/11/15 18:01:42 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:30:54 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		std::cout << RED << ERR_MSG_NUMBER_OF_ARGS << RESET << std::endl;
+		PRINT_ERROR(RED, ERR_MSG_NUMBER_OF_ARGS);
 		return (EXIT_FAILIURE);
 	}
 	

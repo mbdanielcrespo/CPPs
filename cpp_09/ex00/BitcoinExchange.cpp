@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:07:19 by danalmei          #+#    #+#             */
-/*   Updated: 2024/11/15 18:02:55 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:36:28 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,19 +182,19 @@ void BitcoinExchange::processExchange() const
 	{
 		if (!is_valid_date(it->date))
 		{
-			std::cout << RED << ERR_MSG_DATE << it->date << RESET << std::endl;
+			std::cerr << RED << ERR_MSG_DATE << it->date << RESET << std::endl;
 			continue ;
 		}
 		
 		if (it->value <= 0)
 		{
-			std::cout << RED << ERR_MSG_NEGATIVE_VALUE << RESET << std::endl;
+			std::cerr << RED << ERR_MSG_NEGATIVE_VALUE << RESET << std::endl;
 			continue ;
 		}
 
 		if (it->value >= static_cast<float>(std::numeric_limits<int>::max()))
 		{
-			std::cout << RED << ERR_MSG_TOO_BIG_NUMBER << RESET << std::endl;
+			std::cerr << RED << ERR_MSG_TOO_BIG_NUMBER << RESET << std::endl;
 			continue ;
 		}
 

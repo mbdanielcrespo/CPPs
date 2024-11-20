@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:58:09 by danalmei          #+#    #+#             */
-/*   Updated: 2024/11/18 12:30:50 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:54:56 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int main(int argc, char** argv)
 		double startTime, endTime, listTime, dequeTime;
 
 		pm.store_values(argv);
+		pm.checkDuplicates();
 		
 		PRINT_COLOR(YELLOW, "Before: ");
 		const List& list = pm.getList();
@@ -64,7 +65,7 @@ int main(int argc, char** argv)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << RED << e.what() << RESET << '\n';
+		PRINT_ERROR(RED, e.what());
 		return EXIT_FAILIURE;
 	}
 	

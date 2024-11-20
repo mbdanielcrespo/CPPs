@@ -36,7 +36,6 @@ class PmergeMe
 		Deque _numbersDeque;
 
 		void validateNumber(const std::string& str) const;
-		void checkDuplicates() const;
 		
 		void mergeInsertSort(List& sequence);
 		void mergeInsertSort(Deque& sequence);
@@ -48,6 +47,7 @@ class PmergeMe
 		~PmergeMe();
 
 		void	store_values(char **argv);
+		void	checkDuplicates() const;
 		//void	ford_jhonson();
 
 		void sortList();

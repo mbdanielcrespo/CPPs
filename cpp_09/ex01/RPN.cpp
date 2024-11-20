@@ -45,7 +45,7 @@ RPN& RPN::operator=(const RPN& cp)
 RPN::~RPN()
 {
 	if (DEBUG == DEBUG_ON)
-		PRINT_COLOR(RED, DEFAULT_DESTRUCTOR);
+		PRINT_ERROR(RED, DEFAULT_DESTRUCTOR);
 }
 
 static bool isValidNumber(const std::string& token)
@@ -80,12 +80,12 @@ static int	operate(int num1, int num2, std::string operand)
 	{
 		if (num2 == 0)
 		{
-			PRINT_COLOR(RED, "Error: Division by zero!");
+			PRINT_ERROR(RED, ERR_MSG_DIV_BY_0);
 			exit(EXIT_FAILURE);
 		}
 		return (num1 / num2);
 	}
-	PRINT_COLOR(RED, "Something very wired happend!");
+	PRINT_ERROR(RED, ERR_MSG_UNEXPECTED);
 	return (0);
 }
 
@@ -110,7 +110,7 @@ bool	RPN::performRPN(const std::string &input)
 		{
 			if (_values.size() < 2)
 			{
-				PRINT_COLOR(RED, ERR_MSG_2);
+				PRINT_ERROR(RED, ERR_MSG_2);
 				return (0);
 				continue ;
 			}
@@ -127,19 +127,19 @@ bool	RPN::performRPN(const std::string &input)
 		}
 		else
 		{
-			PRINT_COLOR(RED, ERR_MSG_3);
+			PRINT_ERROR(RED, ERR_MSG_3);
 			return (0);
 		}
 
 		if (_values.size() == 1)
 			finalResult = _values.top();
 		//else
-		//	PRINT_COLOR(RED, ERR_MSG_1);
+		//	PRINT_ERROR(RED, ERR_MSG_1);
 	}
 
 	if (_values.size() != 1)
 	{
-		PRINT_COLOR(RED, ERR_MSG_1);
+		PRINT_ERROR(RED, ERR_MSG_1);
 		return (0);
 	}
 

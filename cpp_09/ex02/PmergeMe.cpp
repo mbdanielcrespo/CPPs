@@ -58,19 +58,19 @@ void	PmergeMe::store_values(char **argv)
 void PmergeMe::validateNumber(const std::string& str) const
 {
 	if (str.empty())
-		throw std::invalid_argument("Empty argument");
+		throw std::invalid_argument("Error: Empty argument");
 	
 	for (size_t i = 0; i < str.length(); i++)
 	{
 		if (!isdigit(str[i]))
-			throw std::invalid_argument("Invalid character in number: " + str);
+			throw std::invalid_argument("Error: Invalid character in number: " + str);
 	}
 	
 	long num = std::atol(str.c_str());
 	if (num > INT_MAX)
-		throw std::invalid_argument("Number too large: " + str);
+		throw std::invalid_argument("Error: Number too large: " + str);
 	if (num < 0)
-		throw std::invalid_argument("Negative number not allowed: " + str);
+		throw std::invalid_argument("Error: Negative number not allowed: " + str);
 }
 
 void PmergeMe::checkDuplicates() const
@@ -87,7 +87,7 @@ void PmergeMe::checkDuplicates() const
 		if (*it == *next)
 		{
 			std::ostringstream oss;
-			oss << "Duplicate number found: " << *it;
+			oss << "Error: Duplicate number found: " << *it;
 			throw std::invalid_argument(oss.str());
 		}
 		++it;

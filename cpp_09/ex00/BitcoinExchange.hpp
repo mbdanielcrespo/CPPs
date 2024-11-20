@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:58:12 by danalmei          #+#    #+#             */
-/*   Updated: 2024/11/14 10:48:19 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/20 11:31:16 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ struct BitcoinData
 	std::string date;
 	float value;
 };
-// ERRORS TO STDERROR
+
 class BitcoinExchange
 {
 	private:
@@ -33,7 +33,7 @@ class BitcoinExchange
 		std::vector<BitcoinData> _inputValues;
 		
 		void	loadDatabase(const std::string &dbFile);
-		//float	getBitcoinPrice(const std::string &data);
+		
 	public:
 		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange& cp);
