@@ -85,6 +85,20 @@ void	BitcoinExchange::loadDatabase(const std::string &dbFile)
 	}
 }
 
+std::string trim(const std::string& str)
+{
+    size_t start = 0;
+    while (start < str.size() && (str[start] == ' ' || str[start] == '\t'))
+        start++;
+
+    size_t end = str.size();
+    while (end > start && (str[end - 1] == ' ' || str[end - 1] == '\t'))
+        end--;
+
+    return str.substr(start, end - start);
+}
+
+
 void	BitcoinExchange::processInputFile(const std::string &inputFile)
 {
 	std::ifstream input(inputFile.c_str());
@@ -101,9 +115,12 @@ void	BitcoinExchange::processInputFile(const std::string &inputFile)
 		std::stringstream ss(line);
 		std::string date;
 		float n_btc = -1;
+		std::string wtv;
 
 		std::getline(ss, date, '|');
 		if (!(ss >> n_btc))
+			n_btc = -1;
+		if (ss >> wtv)
 			n_btc = -1;
 		BitcoinData data;
 		data.date = date;

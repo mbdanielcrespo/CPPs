@@ -51,7 +51,8 @@
 		"typeinfo": "cpp",
 		"optional": "cpp",
 		"*.tpp": "cpp",
-		"stack": "cpp"
+		"stack": "cpp",
+		"list": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

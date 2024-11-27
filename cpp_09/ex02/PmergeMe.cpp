@@ -95,6 +95,34 @@ void PmergeMe::checkDuplicates() const
 	}
 }
 
+template <typename Container>
+Container generateJacobsthalSequence(int n)
+{
+    Container sequence;
+    if (n <= 0)
+        return sequence;
+
+    sequence.push_back(0); // Jacobsthal(0)
+    if (n == 1)
+        return sequence;
+
+    sequence.push_back(1); // Jacobsthal(1)
+
+    int prev1 = 1; // Jacobsthal(1)
+    int prev2 = 0; // Jacobsthal(0)
+
+    for (int i = 2; i < n; ++i)
+    {
+        int next = prev1 + 2 * prev2;
+        if (next >= n) // Ensure index does not exceed `n`
+            break;
+        sequence.push_back(next);
+        prev2 = prev1;
+        prev1 = next;
+    }
+    return sequence;
+}
+
 void PmergeMe::mergeInsertSort(Deque& sequence)
 {
 	if (sequence.size() <= 1)
@@ -109,7 +137,7 @@ void PmergeMe::mergeInsertSort(Deque& sequence)
 
 	PairDeque pairs;
 	if (DEBUG == DEBUG_ON)
-		std::cout << CYAN << "Creating pairs: ";
+		PRINT_COLOR(CYAN, "Creating pairs ...");
 	for (size_t i = 0; i < sequence.size(); i += 2)
 	{
 		int a = sequence[i];
@@ -138,40 +166,56 @@ void PmergeMe::mergeInsertSort(Deque& sequence)
 
 	if (DEBUG == DEBUG_ON)
 	{
-		std::cout << "Separating pairs into:";
-		std::cout << "\nLarger numbers: ";
+		PRINT_COLOR(CYAN, "\nSeparating pairs into: ");
+		PRINT_COLOR(CYAN, "\nLarger numbers: ");
 		for (size_t i = 0; i < largerNumbers.size(); i++)
 			std::cout << largerNumbers[i] << " ";
 		std::cout << std::endl;
-		std::cout << "\nSmaller numbers: ";
+		PRINT_COLOR(CYAN, "\nSmaller numbers: ");
 		for (size_t i = 0; i < smallerNumbers.size(); i++)
 			std::cout << smallerNumbers[i] << " ";
 		std::cout << std::endl;
 	}
 
 	if (DEBUG == DEBUG_ON)
-		std::cout << "Recursivity ..." << std::endl;
+		PRINT_COLOR(CYAN, "Recursivity ...");
 	mergeInsertSort(largerNumbers);
 
 	sequence.clear();
 	sequence = largerNumbers;
 	
 	if (DEBUG == DEBUG_ON)
-		std::cout << "Inserting smaller numbers:\n";
+		PRINT_COLOR(CYAN, "Inserting smaller numbers: ");
+		
+	Deque jacobsthalIndices = generateJacobsthalSequence<Deque>(smallerNumbers.size());
+	if (DEBUG == DEBUG_ON)
+	{
+		PRINT_COLOR(CYAN, "Jacobsthal Sequence: ");
+		for (Deque::iterator it = jacobsthalIndices.begin(); it != jacobsthalIndices.end(); ++it)
+			std::cout << *it << " ";
+		std::cout << std::endl;
+	}
+
+	Deque::iterator jacobIt = jacobsthalIndices.begin();
 	for (size_t i = 0; i < smallerNumbers.size(); ++i)
 	{
-		Deque::iterator pos = std::lower_bound(sequence.begin(), sequence.end(), smallerNumbers[i]);
-		sequence.insert(pos, smallerNumbers[i]);
+		int index = (jacobIt != jacobsthalIndices.end()) ? *jacobIt++ : i;
+		int value = smallerNumbers[index];
+
+		Deque::iterator pos = std::lower_bound(sequence.begin(), sequence.end(), value);
+		sequence.insert(pos, value);
+
 		if (DEBUG == DEBUG_ON)
 		{
-			std::cout << "Current sequence: ";
+			PRINT_COLOR(CYAN, "Current sequence: ");
 			for (size_t j = 0; j < sequence.size(); j++)
 				std::cout << sequence[j] << " ";
 			std::cout << std::endl;
 		}
 	}
 
-	if (last != -1) {
+	if (last != -1)
+	{
 		Deque::iterator pos = std::lower_bound(sequence.begin(), sequence.end(), last);
 		sequence.insert(pos, last);
 	}
@@ -219,11 +263,24 @@ void PmergeMe::mergeInsertSort(List& sequence)
 	sequence.clear();
 	sequence = largerNumbers;
 	
-	List::iterator smallIt;
-	for (smallIt = smallerNumbers.begin(); smallIt != smallerNumbers.end(); smallIt++)
+	List jacobsthalIndices = generateJacobsthalSequence<List>(smallerNumbers.size());
+	List::iterator jacobIt = jacobsthalIndices.begin();
+
+	for (size_t i = 0; i < smallerNumbers.size(); ++i)
 	{
-		List::iterator pos = std::lower_bound(sequence.begin(), sequence.end(), *smallIt);
-		sequence.insert(pos, *smallIt);
+		int index;
+		if (jacobIt != jacobsthalIndices.end())
+			index = *jacobIt++;
+		else
+			index = i;
+		List::iterator targetIt = smallerNumbers.begin();
+		std::advance(targetIt, index);
+
+		if (targetIt == smallerNumbers.end())
+			break;
+
+		List::iterator pos = std::lower_bound(sequence.begin(), sequence.end(), *targetIt);
+		sequence.insert(pos, *targetIt);
 	}
 
 	if (last != -1)
@@ -232,14 +289,6 @@ void PmergeMe::mergeInsertSort(List& sequence)
 		sequence.insert(pos, last);
 	}
 }
-
-/*
-void	PmergeMe::ford_jhonson()
-{
-	mergeInsertSort(_numbersDeque);
-	mergeInsertSort(_numbersList);
-}
-*/
 
 void	PmergeMe::sortList() { mergeInsertSort(_numbersList); }
 void	PmergeMe::sortDeque() { mergeInsertSort(_numbersDeque); }

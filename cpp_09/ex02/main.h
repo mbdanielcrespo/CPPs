@@ -72,3 +72,8 @@
 
 // shuf -i 1-100 -n 100 | tr "\n" " " > input.txt
 //./PmergeMe $(cat input.txt)
+
+/*
+The algorithm uses Jacobsthal numbers to determine how many elements to merge in each phase 
+and where to insert elements during merging. 
+*/
