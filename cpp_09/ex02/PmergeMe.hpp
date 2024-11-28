@@ -48,7 +48,6 @@ class PmergeMe
 
 		void	store_values(char **argv);
 		void	checkDuplicates() const;
-		//void	ford_jhonson();
 
 		void sortList();
 		void sortDeque();

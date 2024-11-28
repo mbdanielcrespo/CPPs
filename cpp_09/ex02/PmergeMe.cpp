@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <vector>
 #include <PmergeMe.hpp>
 
 PmergeMe::PmergeMe()
@@ -96,31 +97,31 @@ void PmergeMe::checkDuplicates() const
 }
 
 template <typename Container>
-Container generateJacobsthalSequence(int n)
+static Container generateJacobsthalSequence(int n)
 {
-    Container sequence;
-    if (n <= 0)
-        return sequence;
+	Container sequence;
+	if (n <= 0)
+		return sequence;
 
-    sequence.push_back(0); // Jacobsthal(0)
-    if (n == 1)
-        return sequence;
+	sequence.push_back(0);
+	if (n == 1)
+		return sequence;
 
-    sequence.push_back(1); // Jacobsthal(1)
+	sequence.push_back(1);
 
-    int prev1 = 1; // Jacobsthal(1)
-    int prev2 = 0; // Jacobsthal(0)
+	int prev1 = 1;
+	int prev2 = 0;
 
-    for (int i = 2; i < n; ++i)
-    {
-        int next = prev1 + 2 * prev2;
-        if (next >= n) // Ensure index does not exceed `n`
-            break;
-        sequence.push_back(next);
-        prev2 = prev1;
-        prev1 = next;
-    }
-    return sequence;
+	for (int i = 2; i < n; ++i)
+	{
+		int next = prev1 + 2 * prev2;
+		if (next >= n)
+			break;
+		sequence.push_back(next);
+		prev2 = prev1;
+		prev1 = next;
+	}
+	return sequence;
 }
 
 void PmergeMe::mergeInsertSort(Deque& sequence)
@@ -186,7 +187,6 @@ void PmergeMe::mergeInsertSort(Deque& sequence)
 	
 	if (DEBUG == DEBUG_ON)
 		PRINT_COLOR(CYAN, "Inserting smaller numbers: ");
-		
 	Deque jacobsthalIndices = generateJacobsthalSequence<Deque>(smallerNumbers.size());
 	if (DEBUG == DEBUG_ON)
 	{
@@ -220,75 +220,172 @@ void PmergeMe::mergeInsertSort(Deque& sequence)
 		sequence.insert(pos, last);
 	}
 }
-
-void PmergeMe::mergeInsertSort(List& sequence)
+/*
+static int handleImpar(List& sequence)
 {
-	if (sequence.size() <= 1)
-		return;
-	
 	int last = -1;
-	if (sequence.size() % 2)
-	{
+	if (sequence.size() % 2) {
 		last = sequence.back();
 		sequence.pop_back();
 	}
+	return last;
+}
 
+static PairList	createSortedPairs(List& sequence)
+{
 	PairList pairs;
 	List::iterator it = sequence.begin();
+	
 	while (it != sequence.end())
 	{
 		int first = *it++;
-		if (it == sequence.end())
-			break;
+		if (it == sequence.end()) break;
+		
 		int second = *it++;
-
-		if (first > second)
-			pairs.push_back(IntPair(first, second));
-		else
-			pairs.push_back(IntPair(second, first));
+		if (first > second) {
+			std::swap(first, second);
+		}
+		
+		pairs.push_back(IntPair(first, second));
 	}
-	
+	return pairs;
+}
 
-	List largerNumbers;
-	List smallerNumbers;
-	PairList::iterator pairIt;
-	for (pairIt = pairs.begin(); pairIt != pairs.end(); pairIt++)
+static void extractNumbers(const PairList& pairs, List& smallerNumbers, List& largerNumbers)
+{
+	for (PairList::const_iterator it = pairs.begin(); it != pairs.end(); ++it)
 	{
-		largerNumbers.push_back(pairIt->first);
-		smallerNumbers.push_back(pairIt->second);
+		smallerNumbers.push_back(it->first);
+		largerNumbers.push_back(it->second);
 	}
+}
 
-	mergeInsertSort(largerNumbers);
+static void insertLastElement(List& sequence, int last)
+{
+	List::iterator pos = std::lower_bound(sequence.begin(), sequence.end(), last);
+	sequence.insert(pos, last);
+}
 
-	sequence.clear();
-	sequence = largerNumbers;
-	
+static void insertSmallNumbers(List& sequence, List& largerNumbers, List& smallerNumbers)
+{
 	List jacobsthalIndices = generateJacobsthalSequence<List>(smallerNumbers.size());
+	
+	sequence.clear();
+	sequence.insert(sequence.begin(), largerNumbers.begin(), largerNumbers.end());
+	
 	List::iterator jacobIt = jacobsthalIndices.begin();
-
 	for (size_t i = 0; i < smallerNumbers.size(); ++i)
 	{
-		int index;
-		if (jacobIt != jacobsthalIndices.end())
-			index = *jacobIt++;
-		else
-			index = i;
+		size_t index = (jacobIt != jacobsthalIndices.end()) ? static_cast<size_t>(*jacobIt++) : i;
+		
+		if (index >= smallerNumbers.size()) break;
+		
 		List::iterator targetIt = smallerNumbers.begin();
 		std::advance(targetIt, index);
-
-		if (targetIt == smallerNumbers.end())
-			break;
-
 		List::iterator pos = std::lower_bound(sequence.begin(), sequence.end(), *targetIt);
 		sequence.insert(pos, *targetIt);
 	}
-
-	if (last != -1)
-	{
-		List::iterator pos = std::lower_bound(sequence.begin(), sequence.end(), last);
-		sequence.insert(pos, last);
-	}
 }
+
+void PmergeMe::mergeInsertSort(List& sequence)
+{
+	if (sequence.size() <= 1) return;
+
+	int last = handleImpar(sequence);
+	PairList pairs = createSortedPairs(sequence);
+	
+	List largerNumbers;
+	List smallerNumbers;
+	extractNumbers(pairs, smallerNumbers, largerNumbers);
+	
+	mergeInsertSort(largerNumbers);
+	insertSmallNumbers(sequence, largerNumbers, smallerNumbers);
+	
+	if (last != -1)
+		insertLastElement(sequence, last);
+}*/
+
+void PmergeMe::mergeInsertSort(List& sequence)
+{
+    if (sequence.size() <= 1)
+        return;
+
+    int last = -1;
+    if (sequence.size() % 2)
+    {
+        last = sequence.back();
+        sequence.pop_back();
+    }
+
+    PairList pairs;
+    List::iterator it = sequence.begin();
+    while (it != sequence.end())
+    {
+        int first = *it++;
+        if (it == sequence.end())
+            break;
+        int second = *it++;
+
+        if (first > second)
+            pairs.push_back(IntPair(first, second));
+        else
+            pairs.push_back(IntPair(second, first));
+    }
+
+    List largerNumbers;
+    List smallerNumbers;
+    for (PairList::iterator pairIt = pairs.begin(); pairIt != pairs.end(); ++pairIt)
+    {
+        largerNumbers.push_back(pairIt->first);
+        smallerNumbers.push_back(pairIt->second);
+    }
+
+    mergeInsertSort(largerNumbers);
+
+    sequence.clear();
+    sequence = largerNumbers;
+
+    List jacobsthalIndices = generateJacobsthalSequence<List>(smallerNumbers.size());
+    std::vector<bool> inserted(smallerNumbers.size(), false); // Track inserted elements by index
+
+    // Process Jacobsthal indices
+    for (List::iterator jacobIt = jacobsthalIndices.begin(); jacobIt != jacobsthalIndices.end(); ++jacobIt)
+    {
+        int index = *jacobIt;
+
+        // Skip if index is out of range or already inserted
+        if (index >= static_cast<int>(smallerNumbers.size()) || inserted[index])
+            continue;
+
+        List::iterator targetIt = smallerNumbers.begin();
+        std::advance(targetIt, index);
+
+        List::iterator pos = std::lower_bound(sequence.begin(), sequence.end(), *targetIt);
+        sequence.insert(pos, *targetIt);
+
+        inserted[index] = true; // Mark as inserted
+    }
+
+    // Process any remaining numbers not covered by Jacobsthal sequence
+    for (size_t i = 0; i < smallerNumbers.size(); ++i)
+    {
+        if (inserted[i]) // Skip already inserted numbers
+            continue;
+
+        List::iterator targetIt = smallerNumbers.begin();
+        std::advance(targetIt, i);
+
+        List::iterator pos = std::lower_bound(sequence.begin(), sequence.end(), *targetIt);
+        sequence.insert(pos, *targetIt);
+    }
+
+    if (last != -1)
+    {
+        List::iterator pos = std::lower_bound(sequence.begin(), sequence.end(), last);
+        sequence.insert(pos, last);
+    }
+}
+
 
 void	PmergeMe::sortList() { mergeInsertSort(_numbersList); }
 void	PmergeMe::sortDeque() { mergeInsertSort(_numbersDeque); }

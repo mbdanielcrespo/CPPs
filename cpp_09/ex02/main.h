@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:05:44 by danalmei          #+#    #+#             */
-/*   Updated: 2024/11/20 11:49:24 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:14:02 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define PRINT_COLOR(color, text) (std::cerr << color << text << RESET << std::endl)
 # define PRINT_ERROR(color, text) (std::cerr << color << text << RESET << std::endl)
 
-# define DEBUG		0
+# define DEBUG		1
 # define DEBUG_ON	1
 # define DEBUG_OFF	0
 
