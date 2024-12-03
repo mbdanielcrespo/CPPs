@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 16:58:09 by danalmei          #+#    #+#             */
-/*   Updated: 2024/11/28 14:05:04 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:56:56 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int main(int argc, char** argv)
 		dequeTime = endTime - startTime;
 
 		PRINT_COLOR(YELLOW, "After: ");
-		const List& list_sorted = pm.getList();
-		for (List::const_iterator it = list_sorted.begin(); it != list_sorted.end(); it++)
+		const Deque& list_sorted = pm.getDeque();
+		for (Deque::const_iterator it = list_sorted.begin(); it != list_sorted.end(); it++)
 			std::cout << *it << " ";
 		std::cout << std::endl;
 

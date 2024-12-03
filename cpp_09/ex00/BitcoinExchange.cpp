@@ -6,7 +6,7 @@
 /*   By: danalmei <danalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:07:19 by danalmei          #+#    #+#             */
-/*   Updated: 2024/11/20 11:36:28 by danalmei         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:12:27 by danalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,20 +84,6 @@ void	BitcoinExchange::loadDatabase(const std::string &dbFile)
 		}
 	}
 }
-
-std::string trim(const std::string& str)
-{
-    size_t start = 0;
-    while (start < str.size() && (str[start] == ' ' || str[start] == '\t'))
-        start++;
-
-    size_t end = str.size();
-    while (end > start && (str[end - 1] == ' ' || str[end - 1] == '\t'))
-        end--;
-
-    return str.substr(start, end - start);
-}
-
 
 void	BitcoinExchange::processInputFile(const std::string &inputFile)
 {
